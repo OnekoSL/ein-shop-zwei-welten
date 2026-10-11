@@ -74,7 +74,7 @@ Weitere Handwerke, Rezepte über das erste Bibliotheksangebot hinaus, Startberuf
 - Projekt unter `game/` mit App, Hauptmenü, Spielansicht und gemeinsamem Theme erstellt.
 - Starten, Zurück, Escape, Beenden, Tastaturfokus und skalierbare Oberfläche mit 1280 × 720 Startgröße und 960 × 540 Mindestgröße umgesetzt.
 - PowerShell-7-Werkzeuge für Einrichtung und Windows-Release-Export samt ZIP, Prüfsumme und Fehlerbehandlung erstellt.
-- Lokale Versionsverwaltung auf `main` eingerichtet; Quellen, Ressourcen, Werkzeuge und Dokumentation versioniert.
+- Versionsverwaltung auf `main` eingerichtet; Quellen, Ressourcen, Werkzeuge und Dokumentation im öffentlichen [GitHub-Repository](https://github.com/OnekoSL/ein-shop-zwei-welten) veröffentlicht.
 
 **Fertig, wenn:** Das Projekt im Editor startet und ein exportierter Testbuild unabhängig vom Editor geöffnet und beendet werden kann. Projektstart und Export sind kurz dokumentiert.
 

@@ -17,6 +17,13 @@ Bedienung: Maus, Tab und Umschalt+Tab zur Auswahl, Enter oder Leertaste zum Ausl
 
 Die folgenden Befehle im Projektstamm in **PowerShell 7** ausführen. Git ist für die Versionsverwaltung installiert. Für GDScript ist kein .NET-SDK erforderlich.
 
+Für eine neue Arbeitskopie zuerst das öffentliche Repository klonen:
+
+```powershell
+git clone https://github.com/OnekoSL/ein-shop-zwei-welten.git
+Set-Location ein-shop-zwei-welten
+```
+
 ```powershell
 pwsh -NoProfile -File .\tools\setup_godot.ps1
 ```
@@ -52,7 +59,7 @@ Das Skript importiert das Projekt und verwendet das Profil „Windows Desktop“
 - Hauptmenü und Spielansicht enthalten die eigene Bedienung und setzen beim Öffnen den Tastaturfokus auf die erste Schaltfläche.
 - Das gemeinsame Theme liegt unter `game/ui/`; Schriften, Farben, Schaltflächen und Fokusränder werden dort gepflegt. Die SVG-Illustrationen sind eigene Projektressourcen unter `game/assets/`.
 - Der gemeinsame Spielerstand und die Weltzustände folgen im nächsten Meilenstein. Die vorhandenen Ansichten enthalten keine Wirtschafts- oder Speicherlogik.
-- Git führt die Quellen, UID-Dateien, Ressourcen, Dokumentation, Werkzeuge und Exportkonfiguration. `.tools/`, `game/.godot/`, `build/` und `tmp/` sind ausgeschlossen. Das Repository bleibt lokal auf Branch `main`.
+- Git führt die Quellen, UID-Dateien, Ressourcen, Dokumentation, Werkzeuge und Exportkonfiguration. `.tools/`, `game/.godot/`, `build/` und `tmp/` sind ausgeschlossen. Das öffentliche Repository liegt unter [OnekoSL/ein-shop-zwei-welten](https://github.com/OnekoSL/ein-shop-zwei-welten). Der lokale Branch `main` folgt `origin/main`.
 
 ## Prüfung wiederholen
 

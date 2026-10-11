@@ -2,6 +2,8 @@
 
 Spielkonzept und erster Godot-Prototyp für Windows.
 
+Öffentliches Repository: [OnekoSL/ein-shop-zwei-welten](https://github.com/OnekoSL/ein-shop-zwei-welten), Hauptbranch `main`.
+
 **Stand:** 11. Oktober 2026  
 **Status:** Godot-Grundprojekt und Windows-Testbuild 0.1.0 umgesetzt; Spielmechaniken in Planung  
 **Titel:** „Ein Shop, zwei Welten“ beschreibt die Grundidee. Ein Spieltitel ist noch offen.
