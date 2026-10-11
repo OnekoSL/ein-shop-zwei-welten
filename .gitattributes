@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# Markdown uses two trailing spaces for explicit line breaks.
+*.md whitespace=-blank-at-eol
+*.ps1 text eol=crlf

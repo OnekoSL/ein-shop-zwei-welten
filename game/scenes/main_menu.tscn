@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/two_worlds.svg" id="2_art"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 28
+
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Eyebrow" type="Label" parent="Margin/Layout"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "EIN LADEN. ZWEI WELTEN. DEINE GESCHICHTE."
+
+[node name="Hero" type="HBoxContainer" parent="Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 56
+
+[node name="Copy" type="VBoxContainer" parent="Margin/Layout/Hero"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="Margin/Layout/Hero/Copy"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "Ein Shop,\nzwei Welten."
+
+[node name="Subtitle" type="Label" parent="Margin/Layout/Hero/Copy"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "Ein Erbe voller Möglichkeiten.\nUnd eine Tür in eine andere Welt."
+
+[node name="Space" type="Control" parent="Margin/Layout/Hero/Copy"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Margin/Layout/Hero/Copy"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="StartButton" type="Button" parent="Margin/Layout/Hero/Copy/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 56)
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
+text = "Spiel starten"
+
+[node name="QuitButton" type="Button" parent="Margin/Layout/Hero/Copy/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 56)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../StartButton")
+text = "Beenden"
+
+[node name="Illustration" type="TextureRect" parent="Margin/Layout/Hero"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("2_art")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Footer" type="HBoxContainer" parent="Margin/Layout"]
+layout_mode = 2
+
+[node name="Worlds" type="Label" parent="Margin/Layout/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SmallLabel"
+text = "Unsere Welt  /  Fantasywelt"
+
+[node name="VersionLabel" type="Label" parent="Margin/Layout/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Prototyp"
