@@ -1,4 +1,4 @@
-Ein Shop, zwei Welten — Prototyp 0.3.1
+Ein Shop, zwei Welten — Prototyp 0.3.2
 
 Den gesamten ZIP-Inhalt entpacken und EinShopZweiWelten.exe starten.
 Die EXE, die PCK-Datei und alle weiteren Exportdateien zusammen lassen.
@@ -19,6 +19,8 @@ In der Bibliothek einmal kostenlos lernen und zusaetzlich Rezepte kaufen.
 Analyse wird in der Fantasybibliothek statt Tischlern gelernt.
 
 Im eigenen Laden: Herstellen, Lager, Auslage und Markt.
+Ueberschrift und Navigation stehen links, Waren und Formulare rechts.
+Runde beenden und Zum Hauptmenue bleiben unten in der linken Spalte erreichbar.
 Ein Rezept und vorhandene Materialien waehlen, einen Prototyp herstellen,
 dann auf einem der drei Auslagenplaetze ausstellen und einen Preis eingeben.
 Preise in Euro bzw. Silber, mit Komma oder Punkt und bis zu zwei Nachkommastellen.

@@ -11,18 +11,21 @@ var location_id := ""
 var learned_today := false
 var notice := ""
 var memory: Dictionary = {}
+var navigation: VBoxContainer
 var _scroll: ScrollContainer
 var _body: VBoxContainer
 
 func _ready() -> void:
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 	add_theme_constant_override("separation", 10)
+	if navigation == null:
+		navigation = self
 	var subtitle := "Unsere Welt · Handwerk & Alltag" if world_id == "real" else "Fantasywelt · Magie & Möglichkeiten"
-	UiHelpers.label(self, subtitle + " · Tag %d" % state.data.worlds[world_id].day, 18, true)
+	UiHelpers.label(navigation, subtitle + "\nTag %d" % state.data.worlds[world_id].day, 18, true)
 	if location_id == "shop":
-		var tabs := HBoxContainer.new()
+		var tabs := VBoxContainer.new()
 		tabs.add_theme_constant_override("separation", 8)
-		add_child(tabs)
+		navigation.add_child(tabs)
 		for tab in ["Herstellen", "Lager", "Auslage", "Markt"]:
 			var button := UiHelpers.button(tabs, tab, "Tab_" + tab, func() -> void:
 				memory.tab = tab
@@ -59,7 +62,7 @@ func remember_view() -> void:
 		memory.scroll = 0 if memory.get("reset_scroll", false) else _scroll.scroll_vertical
 		memory.erase("reset_scroll")
 	var focus := get_viewport().gui_get_focus_owner()
-	if focus != null and is_ancestor_of(focus):
+	if focus != null and (is_ancestor_of(focus) or navigation.is_ancestor_of(focus)):
 		memory.focus = str(focus.get_parent().name) if focus.get_parent() is SpinBox else str(focus.name)
 
 func restore_view() -> void:
@@ -68,16 +71,21 @@ func restore_view() -> void:
 	if focus_name.is_empty():
 		return
 	var target := find_child(focus_name, true, false) as Control
+	if target == null:
+		target = navigation.find_child(focus_name, true, false) as Control
 	if target is SpinBox:
 		target.get_line_edit().grab_focus()
 	elif target != null and target.is_visible_in_tree() and not (target is BaseButton and target.disabled):
 		target.grab_focus()
 	else:
-		var tab := find_child("Tab_" + str(memory.get("tab", "Herstellen")), true, false) as Button
+		var tab := navigation.find_child("Tab_" + str(memory.get("tab", "Herstellen")), true, false) as Button
 		if tab != null:
 			tab.grab_focus()
 		else:
-			UiHelpers.focus_first(self)
+			focus_initial()
+
+func focus_initial() -> void:
+	UiHelpers.focus_first(navigation if location_id == "shop" else self)
 
 func _card(title: String) -> VBoxContainer:
 	var panel := PanelContainer.new()

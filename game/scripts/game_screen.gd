@@ -32,7 +32,10 @@ func _ready() -> void:
 		GameSession.Phase.EVENT: _event()
 		GameSession.Phase.SUMMARY: _summary()
 	if view_memory.get("focus", "").is_empty():
-		UiHelpers.focus_first(%Content)
+		if is_instance_valid(trade_view):
+			trade_view.focus_initial()
+		else:
+			UiHelpers.focus_first(%Content)
 
 func remember_view() -> void:
 	if is_instance_valid(trade_view):
@@ -85,6 +88,7 @@ func _select_location(id: String) -> void:
 
 func _visit() -> void:
 	%Heading.text = UiHelpers.LOCATION_NAMES[location_id]
+	var columns := _reading_columns()
 	trade_view = TradeView.new()
 	trade_view.name = "TradeView"
 	trade_view.state = state
@@ -93,10 +97,43 @@ func _visit() -> void:
 	trade_view.learned_today = learned_today
 	trade_view.notice = notice
 	trade_view.memory = view_memory
+	trade_view.navigation = columns.sidebar
 	trade_view.command_requested.connect(func(action: String, arguments: Array) -> void: trade_requested.emit(action, arguments))
 	trade_view.refresh_requested.connect(func() -> void: refresh_requested.emit())
-	%Content.add_child(trade_view)
-	UiHelpers.button(%Content, "Runde beenden", "EndRoundButton", func() -> void: end_requested.emit())
+	columns.body.add_child(trade_view)
+	_sidebar_actions(columns.sidebar, "Runde beenden", "EndRoundButton", func() -> void: end_requested.emit())
+
+func _reading_columns() -> Dictionary:
+	var split := HBoxContainer.new()
+	split.name = "ReadingColumns"
+	split.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	split.add_theme_constant_override("separation", 28)
+	%Content.add_child(split)
+	var sidebar := VBoxContainer.new()
+	sidebar.name = "VisitSidebar"
+	sidebar.custom_minimum_size.x = 300
+	sidebar.add_theme_constant_override("separation", 12)
+	split.add_child(sidebar)
+	%ProgressLabel.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	%ProgressLabel.reparent(sidebar)
+	%Heading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	%Heading.reparent(sidebar)
+	var body := UiHelpers.column(split, 12)
+	body.name = "ReadingBody"
+	return {"sidebar": sidebar, "body": body}
+
+func _sidebar_actions(sidebar: VBoxContainer, text: String, button_name: String, action: Callable) -> void:
+	var space := Control.new()
+	space.custom_minimum_size.y = 12
+	space.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	sidebar.add_child(space)
+	UiHelpers.button(sidebar, text, button_name, action)
+	var footer := %BackButton.get_parent()
+	var hint := footer.get_node("Hint") as Label
+	%BackButton.reparent(sidebar)
+	hint.reparent(sidebar)
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	footer.hide()
 
 func _event() -> void:
 	%Heading.text = "Der Tag klingt aus"
@@ -110,6 +147,8 @@ func _event() -> void:
 func _summary() -> void:
 	var last: Dictionary = state.data.last_summary
 	%Heading.text = "Tag %d abgeschlossen" % last.day
+	var columns := _reading_columns()
+	UiHelpers.label(columns.sidebar, UiHelpers.WORLD_NAMES[last.world_id] + "\n" + UiHelpers.LOCATION_NAMES[last.location_id], 18, true)
 	var scroll := ScrollContainer.new()
 	scroll.name = "ReportScroll"
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -117,7 +156,7 @@ func _summary() -> void:
 	scroll.follow_focus = true
 	# Keyboard users can scroll long reports with the arrow keys.
 	UiHelpers.keyboard_scroll(scroll)
-	%Content.add_child(scroll)
+	columns.body.add_child(scroll)
 	var body := UiHelpers.column(scroll, 12)
 	UiHelpers.label(body, UiHelpers.WORLD_NAMES[last.world_id] + " · " + UiHelpers.LOCATION_NAMES[last.location_id], 24)
 	UiHelpers.label(body, "Endbestand: %s / %s" % [UiHelpers.money(state.data.money.eur_cent), UiHelpers.money(state.data.money.fantasy_pfennig, true)], 26)
@@ -138,5 +177,5 @@ func _summary() -> void:
 		UiHelpers.label(body, "Dein eigener Laden war heute geschlossen.", 18, true)
 	elif last.get("sales", []).is_empty():
 		UiHelpers.label(body, "Die Auslage war leer. Heute gab es keine Verkäufe.", 20, true)
-	UiHelpers.label(%Content, "Gespeichert · Nächster Tag: Unsere Welt %d / Fantasywelt %d" % [state.data.worlds.real.day, state.data.worlds.fantasy.day], 18, true)
-	UiHelpers.button(%Content, "Nächste Runde", "NextRoundButton", func() -> void: next_requested.emit())
+	UiHelpers.label(columns.sidebar, "Gespeichert\nNächster Tag: Unsere Welt %d / Fantasywelt %d" % [state.data.worlds.real.day, state.data.worlds.fantasy.day], 18, true)
+	_sidebar_actions(columns.sidebar, "Nächste Runde", "NextRoundButton", func() -> void: next_requested.emit())

@@ -1,7 +1,7 @@
 # Entwicklung und Windows-Testbuild
 
 **Stand:** 11. Oktober 2026  
-**Version:** 0.3.1  
+**Version:** 0.3.2  
 **Engine:** Godot 4.7.2 Standard, `4.7.2.stable.official.ed1daf0bf`  
 **Ziel:** Windows x86_64, GDScript, Compatibility-Renderer
 
@@ -9,7 +9,7 @@ Der Prototyp enthält zwei Stadtkarten, vollständige Tagesrunden, Materialeinka
 
 ## Spielen
 
-Die portable ZIP liegt unter `build/windows/EinShopZweiWelten-0.3.1-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten. EXE, PCK und Begleitdateien bleiben zusammen; ein Editor ist nicht erforderlich. Eine SHA-256-Datei liegt neben der ZIP. Buildausgaben werden nicht ins Repository übertragen.
+Die portable ZIP liegt unter `build/windows/EinShopZweiWelten-0.3.2-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten. EXE, PCK und Begleitdateien bleiben zusammen; ein Editor ist nicht erforderlich. Eine SHA-256-Datei liegt neben der ZIP. Buildausgaben werden nicht ins Repository übertragen.
 
 1. **Neues Spiel** legt eine Partie an. Ein vorhandener Stand wird erst nach Bestätigung und erfolgreicher Speicherung ersetzt.
 2. **Welt wählen**, ein Gebäude auf der Karte auswählen und mit **Betreten** bestätigen. Damit sind Welt und einziger Besuch für diesen Tag festgelegt.
@@ -143,6 +143,12 @@ Release-Exporte werden separat geprüft; sie unterstützen `--script` nicht. Daf
 Der optionale Spielparameter `--save-dir=...` überschreibt ausschließlich das Speicherverzeichnis. Ohne ihn gilt der normale Benutzerpfad. `--accessibility always` aktiviert den Windows-Zugänglichkeitsbaum ausdrücklich für die Bedienprüfung.
 
 Den oben beschriebenen Küchenstuhlablauf spielen, vollständig beenden, dieselbe EXE mit demselben Speicherordner neu starten und Fortsetzen prüfen: 40 € / 240 S, nächste Welttage 2/3, leeres Materiallager und der Küchenstuhl auf Fantasy-Platz 1. Zusätzlich einen begonnenen Folgetag abbrechen: Nach Fortsetzen muss wieder die letzte gespeicherte Weltwahl erscheinen.
+
+## Änderung und Prüfung 0.3.2
+
+Besuch und Tagesabschluss nutzen eine Links-/Rechts-Aufteilung. Links stehen Überschrift, Welt/Tag, die Ladenregister und die Tagesnavigation. Rechts erhalten Warenlisten, Herstellungsformular und Handelsbericht die verfügbare Höhe. Eingaben und Aktionen zu einer Ware bleiben bei deren Karte; lange Listen scrollen unabhängig von der linken Navigation. Der Geldbestand bleibt oben sichtbar.
+
+Die bestehende Oberflächenprüfung besteht **1.456 Prüfungen ohne Fehler**. Mausbedienung, Tastaturfokus, Eingaben, Scrollen und Tagesablauf wurden bei Mindestgröße, Startgröße und maximiertem Fenster geprüft. Die Renderer-Aufnahmen wurden visuell kontrolliert; schon bei 960 × 540 passt der Küchenstuhlbau vollständig in die rechte Spalte. Bericht: `build/qa/sidebar-0.3.2/report.json`. Import und Windows-Release-Export sind erfolgreich. Spielregeln und Speicherformat bleiben unverändert.
 
 ## Änderung und Prüfung 0.3.1
 
