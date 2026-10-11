@@ -8,6 +8,25 @@ Spielkonzept und Godot-Prototyp für Windows: Handel und Herstellung in zwei Wel
 **Status:** Vollständiger Handelsablauf in Windows-Testbuild 0.3.3; nächste Ausbaustufe sind gesellschaftliche Folgen  
 **Titel:** „Ein Shop, zwei Welten“ beschreibt die Grundidee. Ein Spieltitel ist noch offen.
 
+## Einblicke ins Spiel
+
+Echte Spielaufnahmen aus dem Windows-Prototyp **0.3.3**: Wähle eine Welt, kaufe Rohstoffe und kombiniere Materialien aus beiden Welten zu eigenen Waren. Bestücke deinen Laden, lege Verkaufspreise fest und sieh am Tagesende, was dein Handel eingebracht hat. Ein Klick auf ein Bild öffnet die volle Auflösung.
+
+| Welt wählen | Stadt erkunden |
+| --- | --- |
+| [![Weltwahl mit unserer Welt und der Fantasywelt, jeweils an Tag 1](docs/bilder/01-weltwahl.png)](docs/bilder/01-weltwahl.png) | [![Stadtkarte der Fantasywelt mit eigenem Laden, Schmied, Sägewerk, Schneider und Bibliothek](docs/bilder/02-stadtkarte.png)](docs/bilder/02-stadtkarte.png) |
+| Jede Runde beginnt mit der Wahl der Welt. Beide Welten zählen ihre Tage getrennt. | Wähle auf der Stadtkarte deinen Ortsbesuch für den Tag. |
+
+| Materialien einkaufen | Waren herstellen |
+| --- | --- |
+| [![Sägewerk mit Holzsorten, Preisen, Mengenwahl und Kaufen-Schaltflächen](docs/bilder/03-materialeinkauf.png)](docs/bilder/03-materialeinkauf.png) | [![Herstellung eines Küchenstuhls aus Eichenholz unserer Welt und magischen Nägeln der Fantasywelt](docs/bilder/04-herstellung.png)](docs/bilder/04-herstellung.png) |
+| Händler liefern Rohstoffe ins gemeinsame Lager für beide Welten. | Hier entsteht ein Küchenstuhl aus Eichenholz und magischen Nägeln. |
+
+| Auslage und Verkaufspreise | Tagesabschluss |
+| --- | --- |
+| [![Küchenstuhl auf Auslagenplatz 1 mit einem Verkaufspreis von 40 Silbergroschen](docs/bilder/05-auslage.png)](docs/bilder/05-auslage.png) | [![Handelsbericht mit fünf verkauften Küchenstühlen, Materialkosten und Erlös](docs/bilder/06-tagesabschluss.png)](docs/bilder/06-tagesabschluss.png) |
+| Stelle gebaute Exemplare aus und bestimme ihren Preis – hier 40 Silbergroschen. | Der Bericht zeigt Nachfrage, verkaufte Stücke, Materialkosten und Erlös. |
+
 ## Prototyp starten
 
 Der Prototyp enthält zwei Stadtkarten, sechs Materialhändler, Bibliotheken, Herstellung, drei Auslagenplätze je Laden, berechnete Verkäufe und automatische Spielstände. Die [Handelsregeln 0.3.0](docs/handelsprototyp-0.3.md) erklären die vorläufige Testbalance. Die portable ZIP liegt nach dem Build unter `build/windows/EinShopZweiWelten-0.3.3-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten.
