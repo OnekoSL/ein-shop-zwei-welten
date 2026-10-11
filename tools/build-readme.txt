@@ -1,4 +1,4 @@
-Ein Shop, zwei Welten — Prototyp 0.3.0
+Ein Shop, zwei Welten — Prototyp 0.3.1
 
 Den gesamten ZIP-Inhalt entpacken und EinShopZweiWelten.exe starten.
 Die EXE, die PCK-Datei und alle weiteren Exportdateien zusammen lassen.
@@ -22,6 +22,7 @@ Im eigenen Laden: Herstellen, Lager, Auslage und Markt.
 Ein Rezept und vorhandene Materialien waehlen, einen Prototyp herstellen,
 dann auf einem der drei Auslagenplaetze ausstellen und einen Preis eingeben.
 Preise in Euro bzw. Silber, mit Komma oder Punkt und bis zu zwei Nachkommastellen.
+Die Waehrung bleibt direkt neben jedem Preisfeld sichtbar.
 Ruecknahme und Platzwechsel erfolgen ueber das Lager.
 Analyse zeigt an untersuchten Exemplaren die Werte beider Welten.
 Lange Ansichten mit Mausrad oder fokussiertem Scrollbereich und Pfeiltasten lesen.

@@ -104,13 +104,17 @@ func _price_text(amount: int) -> String:
 func _price_input(parent: Node, key: String, initial: String = "") -> LineEdit:
 	var edit := LineEdit.new()
 	edit.name = key
-	edit.placeholder_text = "Preis in " + ("€" if world_id == "real" else "S")
+	var currency := "€" if world_id == "real" else "S"
+	edit.placeholder_text = "Preis in " + currency
 	edit.custom_minimum_size = Vector2(180, 48)
 	edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	edit.max_length = 16
 	edit.text = memory.get(key, initial)
 	edit.text_changed.connect(func(value: String) -> void: memory[key] = value)
 	parent.add_child(edit)
+	var unit := UiHelpers.label(parent, currency)
+	unit.autowrap_mode = TextServer.AUTOWRAP_OFF
+	unit.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	return edit
 
 static func parse_price(text: String) -> int:

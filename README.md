@@ -5,12 +5,12 @@ Spielkonzept und Godot-Prototyp für Windows: Handel und Herstellung in zwei Wel
 Öffentliches Repository: [OnekoSL/ein-shop-zwei-welten](https://github.com/OnekoSL/ein-shop-zwei-welten), Hauptbranch `main`.
 
 **Stand:** 11. Oktober 2026  
-**Status:** Vollständiger Handelsablauf in Windows-Testbuild 0.3.0; nächste Ausbaustufe sind gesellschaftliche Folgen  
+**Status:** Vollständiger Handelsablauf in Windows-Testbuild 0.3.1; nächste Ausbaustufe sind gesellschaftliche Folgen  
 **Titel:** „Ein Shop, zwei Welten“ beschreibt die Grundidee. Ein Spieltitel ist noch offen.
 
 ## Prototyp starten
 
-Der Prototyp enthält zwei Stadtkarten, sechs Materialhändler, Bibliotheken, Herstellung, drei Auslagenplätze je Laden, berechnete Verkäufe und automatische Spielstände. Die [Handelsregeln 0.3.0](docs/handelsprototyp-0.3.md) erklären die vorläufige Testbalance. Die portable ZIP liegt nach dem Build unter `build/windows/EinShopZweiWelten-0.3.0-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten.
+Der Prototyp enthält zwei Stadtkarten, sechs Materialhändler, Bibliotheken, Herstellung, drei Auslagenplätze je Laden, berechnete Verkäufe und automatische Spielstände. Die [Handelsregeln 0.3.0](docs/handelsprototyp-0.3.md) erklären die vorläufige Testbalance. Die portable ZIP liegt nach dem Build unter `build/windows/EinShopZweiWelten-0.3.1-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten.
 
 Für Entwicklung und erneuten Export: [Einrichtung, Build und Prüfungen](docs/entwicklung.md). Verwendet werden Godot 4.7.2 Standard, GDScript und der Compatibility-Renderer für Windows x86_64. Engine, Importcache und Buildausgaben sind nicht Teil der Versionsverwaltung.
 
