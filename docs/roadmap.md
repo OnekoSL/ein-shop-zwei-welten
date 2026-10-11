@@ -80,21 +80,21 @@ Weitere Handwerke, Rezepte über das erste Bibliotheksangebot hinaus, Startberuf
 
 ### Meilenstein 2 Tagesablauf und Spielzustand umsetzen
 
-**Regelgrundlage ergänzt:** Die Weltwahl zu Rundenbeginn ist kostenlos und gilt für die gesamte Runde (E-067). Fähigkeiten und gekaufte Rezepte sind gemeinsam für beide Welten (E-068). Für diese beiden Fragen ist keine weitere Festlegung nötig. Meilenstein 2 ist damit konkretisiert; die technische Umsetzung hat noch nicht begonnen.
+**Stand:** In Version 0.2.0 umgesetzt und abgenommen. Beide Stadtkarten, alle zehn Ortsbesuche, Tagesphasen und ein automatischer Spielstand sind vorhanden. Prüfstand und Wiederholungsanleitung: [Entwicklung](entwicklung.md).
 
-**Arbeit:**
+**Umgesetzt:**
 
-- Weltwahl, Stadtkarte, genau einen Ortsbesuch, Runde beenden, Ereignis und Tagesabschluss als feste Folge umsetzen. Die kostenlose Weltwahl benötigt keinen vorherigen Ladenbesuch. Nach der Weltwahl einen weiteren Wechsel bis zum Abschluss dieser Runde ausschließen. Zunächst kann das Tagesereignis ein einfacher neutraler Text sein.
-- Nur den Tageszähler der aktiven Welt fortschreiben. Die Tagesnummer des aktuellen Besuchs und der anschließende Wechsel zum nächsten Tag müssen eindeutig sein.
-- Gemeinsames Lager, Geldbestände je Währung sowie einen gemeinsamen Fähigkeits- und Rezeptstand verwalten. Tageszähler, Auslagen und weitere weltbezogene Zustände separat führen. Gemeinsamer Lernfortschritt wirkt in beiden Welten, während die Zeit der inaktiven Welt pausiert. In diesem Meilenstein die Daten vorsehen; Lernen, Rezeptkäufe und vollständigen Handel in Meilenstein 3 umsetzen.
-- Wiederholtes Auslösen des Tagesabschlusses verhindern; jede Tagesrunde wird genau einmal abgerechnet.
-- Einen Grundspielstand nach dem Tagesabschluss speichern und laden. Neue Zustände werden in späteren Meilensteinen ergänzt.
+- Kostenlose Weltwahl zu Rundenbeginn; danach genau ein bestätigter Ortsbesuch in der festen Welt.
+- Je Welt eigener Laden, Schmied, Sägewerk, Schneider und Bibliothek. Fachfunktionen folgen in Meilenstein 3.
+- Runde beenden → neutrales Ereignis → gespeicherter Tagesabschluss → nächste Weltwahl.
+- Nur der aktive Welttag steigt, und erst nach erfolgreichem Speichern. Wiederholte Abschlussaktionen werden abgefangen.
+- Gemeinsame Geldbestände, Lager-, Fähigkeits- und Rezeptdaten sowie getrennte geordnete Auslagen; reine Bestandsanzeige im eigenen Laden.
+- Eine Partie mit automatisch gespeichertem Anfangsstand und Tagesgrenzen. Fortsetzen beginnt an der Weltwahl; neues Spiel und Verwerfen eines begonnenen Tages verlangen Bestätigung.
+- Versionierte JSON-Datei, temporäre Schreibdatei und vorherige gültige Sicherung; lesbare Fehler und ausdrückliche Wiederherstellung.
 
-**Fertig, wenn:** Mehrere Runden mit kostenloser Weltwahl zu Beginn durchlaufen werden können. Innerhalb einer Runde sind ein weiterer Weltwechsel und ein zweiter Ortsbesuch ausgeschlossen. Nur der Tageszähler der aktiven Welt schreitet voran; weltbezogene Zeitabläufe der inaktiven Welt pausieren. Gemeinsame Bestände, Fähigkeiten und Rezepte bleiben in beiden Welten verfügbar. Nach Speichern, Beenden und Laden stimmen Welt, Tageszähler, Geld, Lager, Auslagen, gemeinsamer Fähigkeits- und Rezeptstand sowie Tagesphase überein.
+**Abnahme:** Zwei Tage in unserer Welt und ein Fantasywelt-Tag führen zu nächsten Welttagen 3 und 2. Weltwechsel, zweite Ortsbesuche und doppelte Abschlüsse innerhalb derselben Runde sind ausgeschlossen. Gespeicherte Daten einschließlich gefüllter Lager und Auslagen werden unverändert geladen. Maus, Tastatur, Dialoge und Fenstergrößen wurden geprüft; der entpackte Windows-Build wurde unabhängig gestartet, gespeichert und nach einem vollständigen Neustart fortgesetzt.
 
-**Abnahmebeispiele:** Zwei abgeschlossene Runden in unserer Welt und eine in der Fantasywelt erhöhen deren Tageszähler um zwei beziehungsweise eins. Der Wechsel selbst kostet weder Geld noch einen zusätzlichen Tag. Ein vorbereiteter Fähigkeits- und Rezeptstand ist nach dem Weltwechsel identisch verfügbar und nach Speichern und Laden erhalten. Ein Exemplar in einer Auslage bleibt ausschließlich dort; der gemeinsame Wissensstand erlaubt keinen Zugriff auf die inaktive Auslage (E-057 und E-058).
-
-**Verbleibende Abgrenzung:** Physischer Lagerzugang und spätere zeitabhängige Wirkungen bleiben bei F-06 und F-25 offen. Für den ersten Ablauf werden Bestandsdaten und die bestätigten Zugriffsregeln verwendet. Die genaue Verkaufs- und Ereignisberechnung folgt in Meilenstein 3 und 4; die sichtbare Tagesfolge bleibt durch E-032 vorgegeben. Speichern an abgeschlossenen Tagesgrenzen bleibt der technische Vorschlag.
+**Abgrenzung:** Der Teststart verwendet die vorläufigen Werte aus dem [Testsortiment](testsortiment-und-startbestand.md), keine endgültige Balance. Physischer Lagerzugang und spätere zeitabhängige Wirkungen bei F-06/F-25 bleiben offen. Verschieben von Waren, Lernen, Rezeptkauf und Handel folgen in Meilenstein 3. Das neutrale Ereignis enthält noch keine Gläubiger- oder Chaosregeln.
 
 ### Meilenstein 3 Den vollständigen Handelsablauf spielen
 
@@ -209,7 +209,8 @@ Menüs lassen sich mit Control-Nodes und Containern aufbauen. Das Speichersystem
 | Meilenstein 0 | In Bearbeitung; Regelentwurf und Rechenbeispiele vorhanden, weitere Festlegungen offen |
 | Meilenstein 1 Umsetzung | Grundprojekt und Windows-Testbuild 0.1.0 umgesetzt und abgenommen; Prüfstand in der Entwicklungsanleitung |
 | Meilenstein 2 Regelgrundlage | Weltwahl und gemeinsamer Fähigkeits- und Rezeptstand bestätigt; Aufgaben und Abnahme konkretisiert |
-| Meilensteine 2 bis 7 Umsetzung | Noch nicht begonnen |
+| Meilenstein 2 Umsetzung | Tagesablauf, zwei Welten und Spielstände in 0.2.0 umgesetzt und abgenommen; Prüfstand in der Entwicklungsanleitung |
+| Meilensteine 3 bis 7 Umsetzung | Noch nicht begonnen |
 
 **Als Nächstes:** Nachfrageformel, Qualitätsskala, Mengenbasis und Wertformel konkretisieren. Für den bestätigten Bibliotheksumfang müssen trainierbare Werte, Lernzuwachs und Rezeptzugang festgelegt werden. Das [Testsortiment](testsortiment-und-startbestand.md) liefert vorläufige Materialien, Preise, Rezepte und Startwerte. Die bestätigte Finanzierung und der Prototypverkauf aus dem [Küchenstuhlbeispiel](herstellungs-kosten-verkaufsregeln.md) bleiben verbindliche Grundlage. Die Zahl der Auslagenplätze und die Referenzpreise bei mehreren Materialhändlern werden anschließend geklärt. Verkauf nur beim eigenen Ladenbesuch und Transfers über das Lager sind durch E-056 bis E-058 bestätigt; Ladenplatzpriorität, Erhalt bei null Nachfrage, dynamische Materialkosten und gemeinsame Vorfinanzierung durch E-059 bis E-062.
 

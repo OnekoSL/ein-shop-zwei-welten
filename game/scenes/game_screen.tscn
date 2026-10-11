@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/game_screen.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/shop_icon.svg" id="2_icon"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -19,68 +18,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 28
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 24
 
 [node name="Layout" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 16
 
-[node name="Brand" type="Label" parent="Margin/Layout"]
+[node name="TopBar" type="HBoxContainer" parent="Margin/Layout"]
 layout_mode = 2
+
+[node name="Brand" type="Label" parent="Margin/Layout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"SmallLabel"
 text = "EIN SHOP, ZWEI WELTEN"
 
+[node name="MoneyLabel" type="Label" parent="Margin/Layout/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+
+[node name="ProgressLabel" type="Label" parent="Margin/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+
 [node name="Heading" type="Label" parent="Margin/Layout"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeadingLabel"
-text = "Spielbereich"
 
-[node name="Panel" type="PanelContainer" parent="Margin/Layout"]
+[node name="Content" type="VBoxContainer" parent="Margin/Layout"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Content" type="VBoxContainer" parent="Margin/Layout/Panel"]
-layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 20
-
-[node name="Icon" type="TextureRect" parent="Margin/Layout/Panel/Content"]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 2
-texture = ExtResource("2_icon")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Title" type="Label" parent="Margin/Layout/Panel/Content"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Die Türen öffnen sich bald."
-horizontal_alignment = 1
-
-[node name="Description" type="Label" parent="Margin/Layout/Panel/Content"]
-layout_mode = 2
-theme_type_variation = &"MutedLabel"
-text = "Hier entsteht dein Laden zwischen zwei Welten.\nStadtkarte und Tagesablauf folgen."
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Footer" type="HBoxContainer" parent="Margin/Layout"]
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="Margin/Layout/Footer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 56)
+custom_minimum_size = Vector2(260, 52)
 layout_mode = 2
+theme_type_variation = &"SecondaryButton"
 text = "Zum Hauptmenü"
 
 [node name="Hint" type="Label" parent="Margin/Layout/Footer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"SmallLabel"
-text = "Esc  ·  Zurück"
+text = "Esc · Zurück"
 horizontal_alignment = 2

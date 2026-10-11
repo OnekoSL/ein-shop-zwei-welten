@@ -1,16 +1,16 @@
 # Ein Shop, zwei Welten
 
-Spielkonzept und erster Godot-Prototyp für Windows.
+Spielkonzept und Godot-Prototyp für Windows: zwei Welten, Tagesablauf und Spielstände.
 
 Öffentliches Repository: [OnekoSL/ein-shop-zwei-welten](https://github.com/OnekoSL/ein-shop-zwei-welten), Hauptbranch `main`.
 
 **Stand:** 11. Oktober 2026  
-**Status:** Godot-Grundprojekt und Windows-Testbuild 0.1.0 umgesetzt; Spielmechaniken in Planung  
+**Status:** Tagesablauf und Spielstände mit Windows-Testbuild 0.2.0 umgesetzt; Handel folgt als nächster Meilenstein  
 **Titel:** „Ein Shop, zwei Welten“ beschreibt die Grundidee. Ein Spieltitel ist noch offen.
 
 ## Prototyp starten
 
-Der erste Prototyp enthält Hauptmenü und Spielansicht. Die portable ZIP liegt nach dem Build unter `build/windows/EinShopZweiWelten-0.1.0-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten.
+Der Prototyp enthält zwei Stadtkarten mit jeweils fünf Orten, vollständige Tagesrunden, eine Bestandsansicht und einen automatischen Spielstand. Die portable ZIP liegt nach dem Build unter `build/windows/EinShopZweiWelten-0.2.0-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten.
 
 Für Entwicklung und erneuten Export: [Einrichtung, Build und Prüfungen](docs/entwicklung.md). Verwendet werden Godot 4.7.2 Standard, GDScript und der Compatibility-Renderer für Windows x86_64. Engine, Importcache und Buildausgaben sind nicht Teil der Versionsverwaltung.
 
@@ -24,7 +24,7 @@ Für Entwicklung und erneuten Export: [Einrichtung, Build und Prüfungen](docs/e
 - Jede Welt hat einen eigenen Chaoswert. Der Spieler soll beide Werte möglichst niedrig halten.
 - Der Einfluss umfasst eine Mischung aus wirtschaftlichen Folgen, fremder Technik oder Magie und dem möglichen Bekanntwerden der anderen Welt.
 - Die Idee wirkt zunächst einfach, birgt aber Potenzial und komplexe Probleme.
-- Das Konzept wird weiter ausgearbeitet; das technische Grundprojekt mit Windows-Testbuild ist umgesetzt.
+- Das Konzept wird weiter ausgearbeitet; technisches Grundprojekt, Tagesablauf und Spielstandsystem sind umgesetzt.
 - Die Umsetzung erfolgt in Godot, zunächst als PC-Spiel (E-046). Die [Roadmap](docs/roadmap.md) beschreibt den vorgeschlagenen Weg zur ersten spielbaren Fassung.
 - Für den ersten Tischlerei-Test liefern Schmied, Sägewerk und Schneider jeweils drei verschiedene Materialien (E-063 und E-065). Eine Bibliothek ermöglicht Wertverbesserungen und Rezeptkäufe; pro Besuch ist einmal Lernen zusätzlich zu Rezeptkäufen möglich (E-064 und E-066). [Testsortiment und Startbestand](docs/testsortiment-und-startbestand.md) enthält vorgeschlagene Materialien, Preise und Teststartwerte.
 - Beim Bau werden Materialien verbraucht; für weitere Prototypen werden sie erneut gekauft (E-047). Beim Ausstellen wandert der Prototyp aus dem Lager in die Auslage (E-050). Zusätzliche Verkäufe benötigen vorab Geld für sämtliche Materialkosten in den ursprünglichen Einkaufswährungen; deren Höhe folgt den gültigen Materialpreisen (E-049 und E-061). Reicht das Produktionsbudget für kein weiteres Produkt und besteht Nachfrage, wird der Prototyp selbst ohne erneuten Materialkostenabzug verkauft und das Angebot endet (E-051). Bei null Nachfrage bleibt er stehen (E-060). Nach einer noch finanzierbaren Teilmenge bleibt er in derselben Runde erhalten (E-052). Das [Küchenstuhlbeispiel](docs/herstellungs-kosten-verkaufsregeln.md) zeigt die vollständige Abrechnung.

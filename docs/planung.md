@@ -2,7 +2,7 @@
 
 **Status:** Vorschlag für die nächsten Schritte; Umfang und Termine sind offen.
 
-**Umsetzungsstand:** Das technische Grundprojekt mit Godot 4.7.2 Standard, GDScript, deutschem Hauptmenü und Windows-x64-Testbuild 0.1.0 ist umgesetzt. Einrichtung, Export und Prüfstand stehen in [Entwicklung](entwicklung.md). Tagesablauf und Handel folgen in den nächsten Meilensteinen; ihre weitere Regelplanung läuft parallel.
+**Umsetzungsstand:** Godot-Grundprojekt, Tagesablauf für zwei Welten und lokaler Spielstand sind mit Windows-x64-Testbuild 0.2.0 umgesetzt. Einrichtung, Export und Prüfstand stehen in [Entwicklung](entwicklung.md). Als Nächstes folgt der vollständige Handelsablauf einschließlich Lernen und Rezeptkäufen; die weitere Regelplanung läuft parallel.
 
 Godot als Engine und PC als erste Plattformfamilie sind inzwischen bestätigt (E-046). Die [Roadmap für die Umsetzung](roadmap.md) ordnet die verbleibenden Regelentscheidungen und die technische Arbeit in prüfbare Meilensteine ein. Diese Planung beschreibt weiterhin die fachliche Klärung des Konzepts.
 
@@ -14,7 +14,7 @@ F-01 ist inzwischen geklärt: Der Spieler tritt das Erbe seiner Oma an, übernim
 
 Der Tagesablauf ist durch E-032 bestätigt: Welt wählen, auf der Stadtkarte ein Gebäude auswählen, dort Tagesgeschäfte erledigen und die Runde beenden. Danach folgt ein Ereignis mit Reaktion und gegebenenfalls Entscheidung, zuletzt der Tagesabschluss. Der Tag umfasst einen Ortsbesuch. Die Beschreibung steht in [Spielablauf](spielablauf.md).
 
-Die Regelgrundlage für Meilenstein 2 der Roadmap ist ergänzt: kostenlose Weltwahl am Rundenbeginn und feste Welt während der Runde (E-067), gemeinsamer Fähigkeits- und Rezeptstand in beiden Welten (E-068). Aufgaben und Abnahme sind konkretisiert; die Umsetzung hat noch nicht begonnen. Lernwerte, Rezeptzugang nach dem Kauf und wirtschaftliche Berechnungen werden vor den abhängigen Arbeitsschritten weiter ausgearbeitet.
+Die Regelgrundlage für Meilenstein 2 der Roadmap ist ergänzt: kostenlose Weltwahl am Rundenbeginn und feste Welt während der Runde (E-067), gemeinsamer Fähigkeits- und Rezeptstand in beiden Welten (E-068). Die Umsetzung umfasst jetzt beide Stadtkarten, den Tagesablauf und einen gespeicherten Grundzustand (E-070 bis E-074). Lernwerte, Rezeptzugang nach dem Kauf und wirtschaftliche Berechnungen werden vor den abhängigen Arbeitsschritten weiter ausgearbeitet.
 
 Der Wochenmarkt ist als wöchentliche Gelegenheit mit exotischen Händlern und Kunden beschrieben. Der Spieler kann dort einkaufen und selbst einen Stand mieten und Waren anbieten; die Teilnahme als Verkäufer führt zu einem besonderen Ereignis.
 
