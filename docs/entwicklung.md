@@ -1,7 +1,7 @@
 # Entwicklung und Windows-Testbuild
 
 **Stand:** 11. Oktober 2026  
-**Version:** 0.3.2  
+**Version:** 0.3.3  
 **Engine:** Godot 4.7.2 Standard, `4.7.2.stable.official.ed1daf0bf`  
 **Ziel:** Windows x86_64, GDScript, Compatibility-Renderer
 
@@ -9,7 +9,7 @@ Der Prototyp enthält zwei Stadtkarten, vollständige Tagesrunden, Materialeinka
 
 ## Spielen
 
-Die portable ZIP liegt unter `build/windows/EinShopZweiWelten-0.3.2-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten. EXE, PCK und Begleitdateien bleiben zusammen; ein Editor ist nicht erforderlich. Eine SHA-256-Datei liegt neben der ZIP. Buildausgaben werden nicht ins Repository übertragen.
+Die portable ZIP liegt unter `build/windows/EinShopZweiWelten-0.3.3-windows-x64.zip`. Vollständig entpacken und `EinShopZweiWelten.exe` starten. EXE, PCK und Begleitdateien bleiben zusammen; ein Editor ist nicht erforderlich. Eine SHA-256-Datei liegt neben der ZIP. Buildausgaben werden nicht ins Repository übertragen.
 
 1. **Neues Spiel** legt eine Partie an. Ein vorhandener Stand wird erst nach Bestätigung und erfolgreicher Speicherung ersetzt.
 2. **Welt wählen**, ein Gebäude auf der Karte auswählen und mit **Betreten** bestätigen. Damit sind Welt und einziger Besuch für diesen Tag festgelegt.
@@ -143,6 +143,12 @@ Release-Exporte werden separat geprüft; sie unterstützen `--script` nicht. Daf
 Der optionale Spielparameter `--save-dir=...` überschreibt ausschließlich das Speicherverzeichnis. Ohne ihn gilt der normale Benutzerpfad. `--accessibility always` aktiviert den Windows-Zugänglichkeitsbaum ausdrücklich für die Bedienprüfung.
 
 Den oben beschriebenen Küchenstuhlablauf spielen, vollständig beenden, dieselbe EXE mit demselben Speicherordner neu starten und Fortsetzen prüfen: 40 € / 240 S, nächste Welttage 2/3, leeres Materiallager und der Küchenstuhl auf Fantasy-Platz 1. Zusätzlich einen begonnenen Folgetag abbrechen: Nach Fortsetzen muss wieder die letzte gespeicherte Weltwahl erscheinen.
+
+## Änderung und Prüfung 0.3.3
+
+Auch die Stadtkarte verwendet die Links-/Rechts-Aufteilung. Links stehen Welt, Tag, die gewählte Besuchsstelle sowie Betreten und Hauptmenü. Rechts nutzt die Karte die volle verfügbare Höhe. Die fünf Gebäude bleiben direkt auf der Karte auswählbar; beim Öffnen erhält der eigene Laden den Tastaturfokus. Betreten wird weiterhin erst nach einer Ortsauswahl aktiviert.
+
+Die bestehende Oberflächenprüfung besteht **1.460 Prüfungen ohne Fehler**. Alle zehn Ortsbesuche sowie Ansichten bei Mindestgröße, Startgröße und maximiertem Fenster sind geprüft; Kartenaufnahmen wurden visuell kontrolliert. Bericht: `build/qa/map-sidebar-0.3.3/report.json`. Import, Windows-Release-Export und ZIP-Prüfsumme sind erfolgreich geprüft. Spielregeln und Speicherformat bleiben unverändert.
 
 ## Änderung und Prüfung 0.3.2
 

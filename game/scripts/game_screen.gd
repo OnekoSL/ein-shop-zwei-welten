@@ -34,6 +34,8 @@ func _ready() -> void:
 	if view_memory.get("focus", "").is_empty():
 		if is_instance_valid(trade_view):
 			trade_view.focus_initial()
+		elif phase == GameSession.Phase.CITY_MAP:
+			UiHelpers.focus_first(%Content.find_child("CityMap", true, false))
 		else:
 			UiHelpers.focus_first(%Content)
 
@@ -68,17 +70,16 @@ func _world_heading() -> String:
 	return "%s · Tag %d" % [UiHelpers.WORLD_NAMES[world_id], state.data.worlds[world_id].day]
 
 func _city_map() -> void:
-	%Heading.text = _world_heading()
+	%Heading.text = UiHelpers.WORLD_NAMES[world_id]
+	var columns := _reading_columns()
+	UiHelpers.label(columns.sidebar, "Tag %d" % state.data.worlds[world_id].day, 22, true)
+	_selection_label = UiHelpers.label(columns.sidebar, "Wähle einen Ort für deinen heutigen Besuch.", 20, true)
 	var map := CityMap.new()
 	map.name = "CityMap"
 	map.fantasy = world_id == "fantasy"
 	map.location_selected.connect(_select_location)
-	%Content.add_child(map)
-	var row := HBoxContainer.new()
-	%Content.add_child(row)
-	_selection_label = UiHelpers.label(row, "Wähle einen Ort für deinen heutigen Besuch.", 20, true)
-	_selection_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_enter_button = UiHelpers.button(row, "Betreten", "EnterButton", func() -> void: visit_requested.emit(_selected_location))
+	columns.body.add_child(map)
+	_enter_button = _sidebar_actions(columns.sidebar, "Betreten", "EnterButton", func() -> void: visit_requested.emit(_selected_location))
 	_enter_button.disabled = true
 
 func _select_location(id: String) -> void:
@@ -122,18 +123,19 @@ func _reading_columns() -> Dictionary:
 	body.name = "ReadingBody"
 	return {"sidebar": sidebar, "body": body}
 
-func _sidebar_actions(sidebar: VBoxContainer, text: String, button_name: String, action: Callable) -> void:
+func _sidebar_actions(sidebar: VBoxContainer, text: String, button_name: String, action: Callable) -> Button:
 	var space := Control.new()
 	space.custom_minimum_size.y = 12
 	space.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	sidebar.add_child(space)
-	UiHelpers.button(sidebar, text, button_name, action)
+	var button := UiHelpers.button(sidebar, text, button_name, action)
 	var footer := %BackButton.get_parent()
 	var hint := footer.get_node("Hint") as Label
 	%BackButton.reparent(sidebar)
 	hint.reparent(sidebar)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	footer.hide()
+	return button
 
 func _event() -> void:
 	%Heading.text = "Der Tag klingt aus"

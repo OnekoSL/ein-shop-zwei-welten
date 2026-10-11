@@ -1,4 +1,4 @@
-Ein Shop, zwei Welten — Prototyp 0.3.2
+Ein Shop, zwei Welten — Prototyp 0.3.3
 
 Den gesamten ZIP-Inhalt entpacken und EinShopZweiWelten.exe starten.
 Die EXE, die PCK-Datei und alle weiteren Exportdateien zusammen lassen.
@@ -13,6 +13,8 @@ Bedienung
 
 Welt waehlen, ein Gebaeude auswaehlen, Betreten, Runde beenden,
 Ereignis bestaetigen und Tagesabschluss ansehen. Nur die besuchte Welt altert.
+Auf der Stadtkarte stehen Welt, Tag, Ortsauswahl und Betreten links;
+rechts sind die fuenf Gebaeude auswaehlbar.
 Beide Welten haben fuenf Orte. Saegewerk, Schmied und Schneider verkaufen
 je drei Materialien ins gemeinsame Lager. Preise aendern sich ab Tag 8 woechentlich.
 In der Bibliothek einmal kostenlos lernen und zusaetzlich Rezepte kaufen.
