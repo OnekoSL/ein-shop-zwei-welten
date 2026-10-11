@@ -24,10 +24,9 @@ func read_file(file_path: String) -> Dictionary:
 	file.close()
 	if parse_error != OK:
 		return {"state": null, "error": "Die Spielstanddatei ist beschädigt (ungültiges JSON).", "missing": false}
-	var validation := GameState.validate(parser.data)
-	if not validation.is_empty():
-		return {"state": null, "error": validation, "missing": false}
-	return {"state": GameState.from_data(parser.data), "error": "", "missing": false}
+	var decoded := GameState.decode(parser.data)
+	decoded["missing"] = false
+	return decoded
 
 
 func load_game() -> Dictionary:

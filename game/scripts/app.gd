@@ -23,6 +23,7 @@ func _ready() -> void:
 	session = GameSession.new(saves)
 	session.changed.connect(_on_session_changed)
 	session.save_failed.connect(_on_save_failed)
+	session.action_failed.connect(_on_action_failed)
 	_show_main_menu()
 
 func _replace_screen(screen: Control) -> void:
@@ -85,17 +86,39 @@ func _on_session_changed() -> void:
 
 func _show_game() -> void:
 	var screen := GAME_SCREEN.instantiate()
+	if is_instance_valid(_current_screen) and _current_screen.get_script() == screen.get_script() \
+		and _current_screen.phase == session.phase and _current_screen.world_id == session.world_id and _current_screen.location_id == session.location_id:
+		_current_screen.remember_view()
+		screen.view_memory = _current_screen.view_memory
 	screen.state = session.state.copy()
 	screen.phase = session.phase
 	screen.world_id = session.world_id
 	screen.location_id = session.location_id
+	screen.learned_today = session.learned_today
+	screen.notice = session.notice
 	screen.world_requested.connect(session.choose_world)
 	screen.visit_requested.connect(session.visit)
 	screen.end_requested.connect(session.end_round)
 	screen.finish_requested.connect(_finish_event)
 	screen.next_requested.connect(session.next_round)
 	screen.back_requested.connect(_request_exit.bind(false))
+	screen.trade_requested.connect(_trade_action)
+	screen.refresh_requested.connect(_show_game)
 	_replace_screen(screen)
+	screen.restore_view.call_deferred()
+
+
+func _trade_action(action: String, arguments: Array) -> void:
+	if action in ["buy_material", "buy_recipe", "learn", "craft", "exhibit", "withdraw", "set_price", "analyze"]:
+		if action in ["exhibit", "withdraw"]:
+			var index: int = arguments[1] if action == "exhibit" else arguments[0]
+			_current_screen.view_memory.erase("OfferPrice_%d" % index)
+		session.callv(action, arguments)
+
+
+func _on_action_failed(message: String) -> void:
+	session.notice = message
+	_show_game()
 
 func _finish_event() -> void:
 	_retry_save = _finish_event

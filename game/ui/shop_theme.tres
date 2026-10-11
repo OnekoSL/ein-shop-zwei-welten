@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3]
+[gd_resource type="Theme" load_steps=10 format=3]
 
 [sub_resource type="StyleBoxFlat" id="Style_primary"]
 content_margin_left = 24.0
@@ -92,8 +92,54 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="Style_item"]
+content_margin_left = 20.0
+content_margin_top = 16.0
+content_margin_right = 20.0
+content_margin_bottom = 16.0
+bg_color = Color(0.99, 0.98, 0.95, 1)
+border_width_left = 4
+border_color = Color(0.40, 0.56, 0.44, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_input"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 0.98, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.63, 0.54, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [resource]
 default_font_size = 22
+ItemPanel/base_type = &"PanelContainer"
+ItemPanel/styles/panel = SubResource("Style_item")
+LineEdit/styles/normal = SubResource("Style_input")
+LineEdit/styles/read_only = SubResource("Style_secondary")
+LineEdit/styles/focus = SubResource("Style_focus")
+LineEdit/colors/font_color = Color(0.14, 0.26, 0.23, 1)
+LineEdit/colors/caret_color = Color(0.14, 0.26, 0.23, 1)
+LineEdit/colors/font_placeholder_color = Color(0.4, 0.46, 0.4, 1)
+OptionButton/styles/normal = SubResource("Style_secondary")
+OptionButton/styles/hover = SubResource("Style_secondary_hover")
+OptionButton/styles/pressed = SubResource("Style_secondary_hover")
+OptionButton/styles/focus = SubResource("Style_focus")
+OptionButton/styles/disabled = SubResource("Style_secondary")
+OptionButton/colors/font_color = Color(0.14, 0.26, 0.23, 1)
+OptionButton/colors/font_hover_color = Color(0.14, 0.26, 0.23, 1)
+OptionButton/colors/font_pressed_color = Color(0.14, 0.26, 0.23, 1)
+OptionButton/colors/font_focus_color = Color(0.14, 0.26, 0.23, 1)
 Button/colors/font_color = Color(1, 0.99, 0.94, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)

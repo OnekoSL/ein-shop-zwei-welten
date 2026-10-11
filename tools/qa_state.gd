@@ -29,11 +29,14 @@ func fixture() -> GameState:
 	state.data.inventory.materials = {"oak": 3, "magic_nails": 7}
 	state.data.skills = {"carpentry": 8, "analysis": 2}
 	state.data.recipes.append("padded_chair")
+	var order := 1
 	for id in ["stored", "real_chair", "fantasy_chair"]:
-		state.data.prototypes[id] = {"recipe_id": "kitchen_chair", "material_ids": ["oak", "magic_nails"], "quality": 3.5}
+		state.data.prototypes[id] = {"recipe_id": "kitchen_chair", "material_ids": ["oak", "magic_nails"], "quality": 3.5, "created_order": order, "analyzed": false}
+		order += 1
+	state.data.next_prototype_id = order
 	state.data.inventory.prototype_ids = ["stored"]
-	state.data.worlds.real.display = [{"prototype_id": "real_chair", "price_minor": 4000}]
-	state.data.worlds.fantasy.display = [{"prototype_id": "fantasy_chair", "price_minor": 5678}]
+	state.data.worlds.real.display = [{"prototype_id": "real_chair", "price_minor": 4000}, null, null]
+	state.data.worlds.fantasy.display = [{"prototype_id": "fantasy_chair", "price_minor": 5678}, null, null]
 	return state
 
 

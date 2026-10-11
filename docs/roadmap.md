@@ -2,7 +2,7 @@
 
 **Stand:** 11. Oktober 2026  
 **Bestätigt:** Godot als Engine, zunächst ein PC-Spiel (E-046); erster Build mit Godot 4.7.2 Standard, GDScript und Windows x86_64 (E-069).  
-**Status:** Umsetzungsvorschlag. Meilenstein 0 ist in Bearbeitung; ein [Regelentwurf mit Rechenbeispielen](herstellungs-kosten-verkaufsregeln.md) und ein [Testsortiment](testsortiment-und-startbestand.md) liegen vor. Schmied, Sägewerk, Schneider mit je drei Waren und die Bibliothek gehören zum bestätigten ersten Tischlerei-Test (E-063 bis E-066). Weitere Umfangsdetails, Meilensteine und technische Aufteilung sind Vorschläge. Aufwand und Termine werden nach Eingrenzung des Umfangs geschätzt.
+**Status:** Meilensteine 1 bis 3 sind umgesetzt. Die Regeln des ersten Handelsablaufs sind als Testbalance festgelegt; die endgültige Balance und spätere Meilensteine bleiben offen. Details: [Handelsregeln 0.3.0](handelsprototyp-0.3.md) und [Prüfstand](entwicklung.md).
 
 Das erste Ziel ist eine spielbare Fassung, in der der Spieler in beiden Welten Materialien beschafft, Produkte herstellt, Angebote vorbereitet und die wirtschaftlichen sowie gesellschaftlichen Folgen erlebt. Dafür wird zunächst eine Tischlerei umgesetzt. Das bereits ausgearbeitete Beispiel „Stuhl = Holz + Nägel“ erlaubt es, Materialwahl, Qualität, Preis, Tagesabsatz und Chaos gemeinsam zu prüfen. Danach folgen Wochenmarkt, Einzelstücke und die vollständigen Spielenden.
 
@@ -16,10 +16,10 @@ Die bestätigten Einkaufsorte und Bibliotheksfunktionen werden mit folgenden vor
 | --- | --- |
 | Spielweise | Einzelspieler; Bedienung über Stadtkarte und Menüs |
 | Welten | Unsere Welt und Fantasywelt; getrennte Tageszähler, Geldbestände, Angebote und geheime Chaoswerte |
-| Handwerk | Eine Tischlerei in beiden Welten; Küchenstuhl als bekanntes Startrezept, drei weitere Rezepte als Bibliotheksangebot vorgeschlagen |
-| Materialien | Je drei verschiedene Waren bei Schmied, Sägewerk und Schneider sind bestätigt; vorgeschlagen sind je Welt drei Holzarten, drei Nägelarten und drei Stoffarten gemäß Testsortiment |
-| Orte | Eigener Laden, Schmied, Sägewerk, Schneider und Bibliothek; diese Orte in jeder Welt vorzusehen ist der Testvorschlag. Wochenmarkt ab Meilenstein 5 |
-| Bibliothek | Werte verbessern und Rezepte kaufen; einmal lernen je Besuch zusätzlich zu Rezeptkäufen. Trainierbare Werte, Lernzuwachs, Grenzen und mögliche Kosten noch klären |
+| Handwerk | Eine Tischlerei in beiden Welten; Küchenstuhl als bekanntes Startrezept, drei weitere Rezepte als Bibliotheksangebot umgesetzt |
+| Materialien | Je drei verschiedene Waren bei Schmied, Sägewerk und Schneider sind bestätigt; umgesetzt sind je Welt drei Holzarten, drei Nägelarten und drei Stoffarten gemäß Testsortiment |
+| Orte | Eigener Laden, Schmied, Sägewerk, Schneider und Bibliothek; diese Orte sind in jeder Welt umgesetzt. Wochenmarkt ab Meilenstein 5 |
+| Bibliothek | Werte verbessern und Rezepte kaufen; einmal lernen je Besuch zusätzlich zu Rezeptkäufen. Tischlern kostenlos +1 bis Stufe 10; Analyse einmalig in der Fantasybibliothek statt Tischlern lernen |
 | Lager | Gemeinsames Lager für Materialien und gebaute Exemplare; praktisch unbegrenzter Platz |
 | Verkauf | Dauerhafte Ausstellungsstücke, Preiswahl, verborgener Wert, Analyse und qualitätsabhängiges Tageslimit |
 | Rückmeldung | Tagesabrechnung, Gespräche und ein Ereignis nach jeder beendeten Runde |
@@ -46,23 +46,11 @@ Weitere Handwerke, Rezepte über das erste Bibliotheksangebot hinaus, Startberuf
 
 ### Meilenstein 0 Regeln für den ersten Handelsablauf klären
 
-**Aktueller Stand:** Das [Küchenstuhlbeispiel](herstellungs-kosten-verkaufsregeln.md) bestätigt Materialverbrauch, Herstellung und Ausstellen im Ladenbesuch, Verschieben aus dem Lager in die Auslage, Vorfinanzierung in ursprünglichen Einkaufswährungen und Prototypverkauf bei fehlendem Geld (E-047 und E-049 bis E-052). Die frühere Euro-Kostenbasis aus E-048 ist ersetzt. Nachfrage- und Qualitätsformeln sowie weitere Betriebsregeln bleiben offen.
+**Stand:** Für den Tischlerei-Test abgeschlossen. Einkauf, Materialverbrauch, eingefrorene Qualität, lokale Werte, Nachfrage, Produktionslimit, Vorfinanzierung und Prototypverkauf sind in den [Handelsregeln 0.3.0](handelsprototyp-0.3.md) konkretisiert.
 
-**Arbeit:**
+Drei Auslagenplätze, unbegrenzte Händlervorräte, kostenlose Lernaktionen, Rezeptkäufe und Analysezugang sind bestätigt. Drei Kundengruppen vergleichen den Spieler mit zwei festen Konkurrenten. Materialpreise verändern sich ab Welttag 8 in festen Wochenzyklen. Das Küchenstuhlbeispiel und Mehrangebotsfälle dienen als verbindliche Rechenproben.
 
-- Das [Testsortiment und den Startzustand](testsortiment-und-startbestand.md) für die Tischlerei verwenden: drei Materialhändler mit je drei Waren, Bibliothek und Küchenstuhlrezept. Materialnamen, Preise, weitere Rezepte und Startwerte bleiben vorläufig; den endgültigen geerbten Warenbestand getrennt festlegen.
-- Für die Bibliothek trainierbare Werte, Lernzuwachs, Grenzen und mögliche Kosten festlegen. Einmal lernen und zusätzlich Rezepte kaufen je Besuch ist bestätigt (E-066). Fähigkeiten und gekaufte Rezepte gelten gemeinsam in beiden Welten (E-068); den Zeitpunkt der Nutzbarkeit nach dem Kauf noch klären.
-- Festlegen, wann ein Exemplar hergestellt wird, wie der Materialkauf seine Herstellung ermöglicht und was dabei verbraucht wird. Rezepte bleiben ohne Zutatenmengen.
-- Rücknahme und Auslagewechsel immer über das Lager abbilden; Zugriff nur auf die Auslage des besuchten eigenen Ladens der aktiven Welt (E-057). Für dieselbe Variante in beiden Läden zwei separate Prototypen verwenden (E-058). Die Anzahl der Auslagenplätze klären.
-- Die Qualität aus Materialien und Fähigkeiten beim Bau bestimmen (E-054 und E-055); spätere Fähigkeitsverbesserungen verändern bestehende Prototypen nicht. Relevante Fähigkeiten und Gewichtung klären. Qualitätsskala, Mengenbasis, Rundung, Wert- und Absatzformel an günstigen und hochwertigen Stühlen durchrechnen. Das Tageslimit folgt weiterhin Mengenbasis / Qualität.
-- Laufende Stückkosten aus gültigen Materialpreisen in den ursprünglichen Einkaufswährungen berechnen (E-061). Referenzpreise bei mehreren Materialhändlern und deren Gültigkeitszeitpunkt klären. Alle Angebote aus dem gemeinsamen Anfangsbudget in Ladenplatzreihenfolge finanzieren; sämtliche Einnahmen erst danach gutschreiben (E-059 und E-062). Bei null Nachfrage bleibt der Prototyp ohne Budgetverbrauch stehen (E-060). Beide Geldbestände bleiben getrennt und direktes Tauschen ausgeschlossen.
-- Ladenverkäufe ausschließlich beim Besuch des eigenen Ladens in der aktiven Welt abrechnen (E-056). An anderen Besuchstagen keine zugehörigen Produktionskosten und keinen Prototypverkauf wegen fehlender Finanzierung auslösen. Die interne Abrechnung als vorläufigen Ablauf festhalten und spätestens vor Meilenstein 4 mit Ereignisfolgen abstimmen.
-
-**Fertig, wenn:** Eine mehrtägige Beispielsituation vom Einkauf über Herstellung und Auslage bis zur Abrechnung vollständig durchgerechnet ist. Sie umfasst beide Währungen und mindestens eine Materialbeschaffung aus der anderen Welt. Die Geldänderungen sind eindeutig; keine offene Regel verhindert die Umsetzung dieses Beispiels.
-
-**Betroffene Fragen:** F-04, F-11, F-20, F-22, F-24, F-25, F-26, F-30, F-33 und F-37. Antworten gehören in [Handwerk und Herstellung](handwerk-und-herstellung.md), [Testsortiment und Startbestand](testsortiment-und-startbestand.md), [Handel und Währungen](handel-und-waehrungen.md) und [Offene Fragen](offene-fragen.md).
-
-**Ergänzender Entwurf:** [Nachfrage und reagierende Konkurrenz](nachfrage-und-konkurrenz.md) beschreibt drei Kundengruppen und wenige konkurrierende Geschäfte als möglichen ersten Test. Bedarf, Budgets und Preisbewertung werden in Meilenstein 0 konkretisiert. Verzögerte Konkurrenzreaktionen, neue Waren und Chaosfolgen werden schrittweise ergänzt; ihr genauer Umfang bleibt bei F-38 offen.
+**Weiter offen:** endgültige Balance, Omas Startbestand, Chaos- und Gewöhnungswirkung, gesellschaftliche Ereignisse sowie Anpassung und Produktentwicklung der Konkurrenz. Diese Fragen blockieren den umgesetzten Handelsablauf nicht.
 
 ### Meilenstein 1 Godot-Projekt und Export einrichten
 
@@ -98,26 +86,19 @@ Weitere Handwerke, Rezepte über das erste Bibliotheksangebot hinaus, Startberuf
 
 ### Meilenstein 3 Den vollständigen Handelsablauf spielen
 
-**Arbeit:**
+**Stand:** Handelsprototyp 0.3.0 umgesetzt. Regeln und Testwerte: [Handelsregeln 0.3.0](handelsprototyp-0.3.md). Abnahme und Buildanleitung: [Entwicklung](entwicklung.md).
 
-- Schmied, Sägewerk und Schneider mit je drei Waren, sichtbaren lokalen Preisen und Einkauf ins gemeinsame Lager umsetzen. Testnamen und Preise aus dem Testsortiment verwenden.
-- Die Bibliothek mit einmal Lernen pro Besuch und zusätzlichen Rezeptkäufen umsetzen. Lernfortschritt und bekannte Rezepte im Spielzustand speichern; Geldkosten nach den in Meilenstein 0 festgelegten Regeln abbuchen. Der Bibliotheksbesuch löst keine eigenen Ladenverkäufe aus.
-- Rezept und Materialvarianten auswählen, Produkt herstellen und das gebaute Exemplar im Lager ablegen.
-- Qualität aus Materialien und aktuellem Fähigkeitsstand beim Bau bestimmen und am Exemplar speichern. Zusätzliche Verkaufsware übernimmt die Prototypqualität; späteres Lernen verändert bestehende Exemplare nicht (E-055).
-- Exemplare im Lager nach Produkttyp gruppieren; ein konkretes Exemplar ausstellen, über das Lager zurücknehmen oder wechseln und seinen Preis setzen. Nur die besuchte aktive Auslage bearbeiten; zwei getrennte Prototypen für dieselbe Variante in beiden Läden verwenden.
-- Nachfrage, Tageslimit und vorab finanzierbare Anzahl getrennt berechnen. Gültige Materialpreise über die Materialreferenzen des Prototyps verwenden. Alle Ladenplätze nach ihrer Reihenfolge aus dem Anfangsbudget finanzieren und erst danach sämtliche Einnahmen gutschreiben. Bei fehlender Finanzierung und positiver Nachfrage den Prototyp selbst verkaufen; bei null Nachfrage ohne Kosten stehen lassen. Wert- und Nachfrageformeln aus Meilenstein 0 umsetzen.
-- Analyse zur Anzeige des Produktwerts in Goldmark und Euro einbauen. Für den Prototyp Erwerb und Anwendung ausdrücklich festlegen; Chaoswerte und gesonderter Chaoseinfluss bleiben verborgen.
-- Tagesabrechnung mit Verkaufszahl und Geldänderung anzeigen. Bekannte Materialkosten und Preis bleiben für die Kalkulation zugänglich.
+- Je Welt drei Materialhändler mit je drei Waren, Mengenwahl, sichtbaren Preisen und Einkauf ins gemeinsame Lager.
+- Bibliothek mit einmal kostenlosem Lernen, zusätzlichen Rezeptkäufen und Analysezugang. Gemeinsame Fähigkeiten und Rezepte werden gespeichert.
+- Rezept- und Materialauswahl, beliebig viele durch Material begrenzte Bauten sowie gespeicherte Qualität je Exemplar.
+- Gruppiertes Lager und drei feste Auslagenplätze pro Welt. Rücknahme und Wechsel über das Lager, eigener Preis und Analyse je Exemplar.
+- Drei Kundengruppen und zwei feste Konkurrenten; getrennte Nachfrage-, Limit- und Finanzierungsberechnung. Sämtliche Einnahmen folgen der Finanzierung aller Plätze.
+- Wochenpreise ab aktivem Welttag 8, ursprüngliche Kostenwährungen, Prototypverkauf nur bei positiver Nachfrage und fehlender Finanzierung.
+- Tagesbericht, vollständiges Verwerfen ungespeicherter Aktionen und verlustfreie Migration kompatibler 0.2.0-Spielstände in Format 2.
 
-**Fertig, wenn:** Der Spieler Materialien kaufen, einen Stuhl bauen, aus dem Lager in die Auslage verschieben und damit Einnahmen erzielen kann. Nachfrage, Tageslimit und Geld begrenzen zusätzliche Verkäufe. Das bestätigte Küchenstuhlbeispiel ergibt 40 Euro und 240 Silber; bei gleicher Nachfrage folgen 0 Euro und 360 Silber sowie in der nächsten Runde der Prototypverkauf mit 0 Euro und 400 Silber. Alle Materialkosten werden vor den Einnahmen in ihren ursprünglichen Währungen abgezogen. Normale Verkäufe lassen den Prototyp erhalten, sein eigener Verkauf beendet das Angebot. Qualität und Preis wirken nach den festgelegten Formeln.
+**Abnahme:** Das Küchenstuhlbeispiel ergibt 40 € / 240 S, dann 0 € / 360 S und schließlich 0 € / 400 S. Zusätzliche Prüfungen decken mehrere Angebote, Nullnachfrage, Preiswechsel, Lernen, Stoffverbrauch, Analyse, Welttransfer, Ladenisolation, Migration und fehlgeschlagenes Speichern ab. Oberflächen und exportierter Windows-Build werden mit separaten Spielständen geprüft; der tatsächliche Prüfstand steht in der Entwicklungsanleitung.
 
-**Vorher klären:** Verbleibende Punkte aus F-24, F-25, F-26, F-33 und F-37. Keine Zutatenmengen, Produktionschargen oder manuelle Nachfüllpflicht ergänzen.
-
-**Zusätzliche Abnahme für E-056 bis E-058:** Ein Händlerbesuch verursacht keine Ladenverkäufe, Produktionskosten oder Prototypverkäufe wegen fehlender Finanzierung. Ein Prototyp kann über das Lager und zwei Ladenbesuche in verschiedenen Runden die Welt wechseln. Der Zugriff auf die andere Auslage ist ausgeschlossen. Zwei separat gebaute Exemplare erlauben dieselbe Variante in beiden Läden, ohne ein Exemplar doppelt zu zählen.
-
-**Zusätzliche Abnahme für E-059 bis E-062:** Ladenplätze bestimmen die Budgetpriorität. Ein früheres Angebot kann das Budget eines späteren verbrauchen; seine Einnahmen stehen diesem noch nicht zur Verfügung. Bei null Nachfrage bleibt ein nicht finanzierbarer Prototyp erhalten. Geänderte Materialpreise verändern die zusätzliche Produktionsmenge und Kosten, während Prototypqualität und historische Einkaufsausgaben erhalten bleiben. Die Rechenproben für zwei Angebote und teureres Eichenholz aus den Verkaufsregeln ergeben die vorgesehenen Geldbestände.
-
-**Zusätzliche Abnahme für E-063 bis E-066:** Jeder der drei Materialhändler bietet genau drei Sorten im ersten Test. Ein Bibliotheksbesuch erlaubt einmal Lernen und zusätzlich Rezeptkäufe; ein zweites Lernen im selben Besuch ist ausgeschlossen. Der eigene Laden verkauft währenddessen nicht. Ein gekauftes Rezept wird nach den festgelegten Zugangsregeln nutzbar. Später gebaute Prototypen berücksichtigen den verbesserten Fähigkeitsstand, bestehende behalten ihre gespeicherte Qualität. Ein Polsterstuhl prüft im vorgeschlagenen Sortiment auch den Stoffeinkauf.
+**Nächster Schritt:** Chaos, Reputation, Gewöhnung und Ereignisse konkretisieren. Reagierende Konkurrenz und neue Konkurrenzwaren benötigen anschließend eine eigene festgelegte Reaktionsregel.
 
 ### Meilenstein 4 Gesellschaftliche Folgen erfahrbar machen
 
@@ -204,14 +185,15 @@ Menüs lassen sich mit Control-Nodes und Containern aufbauen. Das Speichersystem
 | Punkt | Stand |
 | --- | --- |
 | Engine und Plattformfamilie | Godot 4.7.2 Standard, Windows x86_64, GDScript, Compatibility |
-| Roadmap | Mit tatsächlichem Stand des ersten Testbuilds ergänzt |
-| Erster Umfang und technische Aufteilung | Materialhändler, je drei Waren und Bibliotheksfunktionen bestätigt; Testinhalte und technische Aufteilung vorgeschlagen |
-| Meilenstein 0 | In Bearbeitung; Regelentwurf und Rechenbeispiele vorhanden, weitere Festlegungen offen |
+| Roadmap | Mit tatsächlichem Stand von Version 0.3.0 ergänzt |
+| Erster Umfang und technische Aufteilung | 18 Materialien, vier Rezepte, Bibliothek und Handelsberechnung umgesetzt |
+| Meilenstein 0 | Regelgrundlage für den ersten Handelsablauf festgelegt; endgültige Balance bleibt offen |
 | Meilenstein 1 Umsetzung | Grundprojekt und Windows-Testbuild 0.1.0 umgesetzt und abgenommen; Prüfstand in der Entwicklungsanleitung |
 | Meilenstein 2 Regelgrundlage | Weltwahl und gemeinsamer Fähigkeits- und Rezeptstand bestätigt; Aufgaben und Abnahme konkretisiert |
 | Meilenstein 2 Umsetzung | Tagesablauf, zwei Welten und Spielstände in 0.2.0 umgesetzt und abgenommen; Prüfstand in der Entwicklungsanleitung |
-| Meilensteine 3 bis 7 Umsetzung | Noch nicht begonnen |
+| Meilenstein 3 Umsetzung | Handelsablauf und Speicherformat 2 in Version 0.3.0 umgesetzt; Prüfstand in der Entwicklungsanleitung |
+| Meilensteine 4 bis 7 Umsetzung | Noch nicht begonnen |
 
-**Als Nächstes:** Nachfrageformel, Qualitätsskala, Mengenbasis und Wertformel konkretisieren. Für den bestätigten Bibliotheksumfang müssen trainierbare Werte, Lernzuwachs und Rezeptzugang festgelegt werden. Das [Testsortiment](testsortiment-und-startbestand.md) liefert vorläufige Materialien, Preise, Rezepte und Startwerte. Die bestätigte Finanzierung und der Prototypverkauf aus dem [Küchenstuhlbeispiel](herstellungs-kosten-verkaufsregeln.md) bleiben verbindliche Grundlage. Die Zahl der Auslagenplätze und die Referenzpreise bei mehreren Materialhändlern werden anschließend geklärt. Verkauf nur beim eigenen Ladenbesuch und Transfers über das Lager sind durch E-056 bis E-058 bestätigt; Ladenplatzpriorität, Erhalt bei null Nachfrage, dynamische Materialkosten und gemeinsame Vorfinanzierung durch E-059 bis E-062.
+**Als Nächstes:** Den Handelsablauf mit der vorläufigen Balance spielen und anschließend Meilenstein 4 konkretisieren: erste wirksame Ereignisse, Chaos und Reaktionen der Welt. Die [Handelsregeln 0.3.0](handelsprototyp-0.3.md) sind dafür die überprüfbare Ausgangsbasis.
 
 Kalendertermine folgen, sobald Umfang und verfügbare Arbeitszeit feststehen. Jeder Meilenstein wird anhand seines spielbaren Ergebnisses und seiner Fertig-Bedingung abgeschlossen. Nach Meilenstein 7 wird entschieden, welche zusätzlichen Handwerke, Inhalte und Gestaltungsschritte in die nächste Fassung kommen.

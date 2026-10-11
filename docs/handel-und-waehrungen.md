@@ -1,7 +1,7 @@
 # Handel und Währungen
 
 **Stand:** 11. Oktober 2026  
-**Status:** Gemeinsames Lager, eigene Währungen, Auslagenwechsel aus dem Lager, Vorfinanzierung in ursprünglichen Einkaufswährungen und Prototypverkauf bei fehlender Finanzierung bestätigt (E-049 bis E-052). Nachfrage- und Wertformeln bleiben offen.
+**Status:** Gemeinsames Lager, eigene Währungen, Auslagenwechsel aus dem Lager, Vorfinanzierung in ursprünglichen Einkaufswährungen und Prototypverkauf bei fehlender Finanzierung bestätigt (E-049 bis E-052). Nachfrage- und Wertformeln des ersten Tests sind in [Handelsregeln 0.3.0](handelsprototyp-0.3.md) festgelegt.
 
 Das [Küchenstuhlbeispiel](herstellungs-kosten-verkaufsregeln.md) bestätigt Materialkosten von 10 Euro und 10 Silber je zusätzlichem Produkt, vollständigen Kostenabzug vor den Einnahmen und eine durch beide Geldbestände begrenzte Verkaufszahl (E-049). Diese Regel ersetzt die frühere eigene Euro-Kostenbasis aus E-048.
 
@@ -69,13 +69,13 @@ Beim Einkauf sieht der Spieler die Preise der besuchten Läden und kennt die Mat
 
 **Verkaufsbedingung, E-056:** Ladenverkäufe finden nur beim Besuch des eigenen Ladens in der aktiven Welt statt. Während eines anderen Ortsbesuchs und in der inaktiven Welt gibt es keine Ladenverkaufsabrechnung, keinen damit verbundenen Materialkostenabzug und keinen Prototypverkauf wegen fehlender Finanzierung. Der eigene Wochenmarktstand wird separat geregelt.
 
-Der [Entwurf für Nachfrage und Konkurrenz](nachfrage-und-konkurrenz.md) ergänzt die preisabhängige Nachfrage um Kundengruppen mit unterschiedlicher Kaufkraft, gemeinsame Kaufinteressen und Angebote anderer Geschäfte. Anpassungen und neue Waren der Konkurrenz sowie Marktfolgen von Chaos sind als Richtung aufgenommen (I-086 bis I-089); die Regeln und Formeln sind noch nicht bestätigt. Die Ausarbeitung gehört zu F-26 und F-38.
+Der [Entwurf für Nachfrage und Konkurrenz](nachfrage-und-konkurrenz.md) ergänzt die preisabhängige Nachfrage um Kundengruppen mit unterschiedlicher Kaufkraft, gemeinsame Kaufinteressen und Angebote anderer Geschäfte. Anpassungen und neue Waren der Konkurrenz sowie Marktfolgen von Chaos sind als Richtung aufgenommen (I-086 bis I-089); der erste Test mit drei Kundengruppen, festen Konkurrenten und deterministischer Nachfrage ist für 0.3.0 bestätigt. Anpassungen und Chaosfolgen folgen später. Die Ausarbeitung gehört zu F-26 und F-38.
 
 Die preisabhängige Nachfrage wird zunächst ohne Tageslimit geschätzt. Im Küchenstuhlbeispiel könnten zum Preis von 40 Silber sechs Stühle verkauft werden. Das Tageslimit von fünf und die vorab finanzierbare Anzahl begrenzen die tatsächlichen zusätzlichen Verkäufe (E-049).
 
 **Zusätzliche Verkäufe = min(Nachfrage, Tageslimit, finanzierbare Anzahl)**
 
-Das Tageslimit bleibt umgekehrt proportional zur Qualität (E-045). Mengenbasis, Qualitätsskala, Rundung und die genaue Nachfrageformel sind offen. So können Masse und hochwertige Waren weiterhin unterschiedliche Handelsweisen bilden.
+Das Tageslimit bleibt umgekehrt proportional zur Qualität (E-045). Rezeptabhängige Mengenbasis, Qualitätsskala, Rundung und Nachfrageformel sind für 0.3.0 festgelegt. So können Masse und hochwertige Waren weiterhin unterschiedliche Handelsweisen bilden.
 
 Die Materialkosten werden in den ursprünglichen Einkaufswährungen bezahlt. Ihre Höhe folgt den gültigen Materialpreisen (E-061): Für den Küchenstuhl sind bei unveränderten Beispielpreisen je zusätzlichem Verkauf 10 Euro und 10 Silber nötig, obwohl der Preis 40 Silber beträgt. Der frühere Materialkauf des Prototyps wird nicht rückwirkend neu berechnet; seine Qualität bleibt erhalten.
 
@@ -89,7 +89,7 @@ Der Prototyp ist durch den ersten Materialkauf bereits bezahlt. Zusätzliche Ver
 
 **Einzelstücke, E-043 und E-044:** Einmalige Marktmaterialien werden im gebauten Einzelstück gebunden. Das Produkt wird einmal verkauft und aus Besitz sowie Angebot entfernt. Dabei wird der volle Preis ohne erneuten Materialkostenabzug gutgeschrieben. Derselbe Zahlungsweg gilt für den Prototypverkauf bei fehlender Finanzierung.
 
-Bei null Nachfrage bleibt der Prototyp auch ohne Produktionsgeld stehen; dieser Platz verbraucht kein Budget und erzeugt keine Einnahmen (E-060). Offen sind die Referenzpreise bei mehreren Materialhändlern und der genaue Gültigkeitszeitpunkt von Preisänderungen. Die vollständigen Beispielrechnungen stehen in [Herstellung und Verkauf mit Kostenrechnung](herstellungs-kosten-verkaufsregeln.md).
+Bei null Nachfrage bleibt der Prototyp auch ohne Produktionsgeld stehen; dieser Platz verbraucht kein Budget und erzeugt keine Einnahmen (E-060). Im Test ist jeder Materialhändler die eindeutige Preisquelle; Wochenpreise werden ab Welttag 8 bei der Weltwahl aktualisiert. Die vollständigen Beispielrechnungen stehen in [Herstellung und Verkauf mit Kostenrechnung](herstellungs-kosten-verkaufsregeln.md).
 
 ### Preisdifferenz als Hinweis auf Gewöhnung
 

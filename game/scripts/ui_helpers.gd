@@ -46,7 +46,11 @@ static func panel(parent: Node) -> VBoxContainer:
 
 
 static func display_name(id: String) -> String:
-	return NAMES.get(id, id.replace("_", " ").capitalize())
+	return NAMES.get(id, GameCatalog.name_for(id))
+
+
+static func goldmark(value: int) -> String:
+	return "%d,%04d Goldmark (%s)" % [value / 10000, value % 10000, money(value, true)]
 
 
 static func money(value: int, fantasy: bool = false) -> String:
@@ -64,3 +68,24 @@ static func focus_first(root: Node) -> void:
 		if node.is_visible_in_tree() and not node.disabled:
 			node.grab_focus.call_deferred()
 			return
+
+
+static func keyboard_scroll(scroll: ScrollContainer) -> void:
+	scroll.focus_mode = Control.FOCUS_ALL
+	scroll.focus_entered.connect(scroll.queue_redraw)
+	scroll.focus_exited.connect(scroll.queue_redraw)
+	scroll.draw.connect(func() -> void:
+		if scroll.has_focus():
+			scroll.draw_rect(Rect2(Vector2(3, 3), scroll.size - Vector2(6, 6)), Color(0.73, 0.46, 0.15), false, 3.0))
+	scroll.gui_input.connect(func(event: InputEvent) -> void:
+		if not scroll.has_focus() or not event is InputEventKey or not event.pressed:
+			return
+		match event.keycode:
+			KEY_DOWN: scroll.scroll_vertical += 64
+			KEY_UP: scroll.scroll_vertical -= 64
+			KEY_PAGEDOWN: scroll.scroll_vertical += int(scroll.size.y)
+			KEY_PAGEUP: scroll.scroll_vertical -= int(scroll.size.y)
+			KEY_HOME: scroll.scroll_vertical = 0
+			KEY_END: scroll.scroll_vertical = int(scroll.get_v_scroll_bar().max_value)
+			_: return
+		scroll.accept_event())

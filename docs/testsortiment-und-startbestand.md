@@ -2,7 +2,7 @@
 
 **Stand:** 11. Oktober 2026  
 **Bestätigt:** Schmied, Sägewerk und Schneider als Materialhändler; je drei verschiedene Waren im ersten Test. Eine Bibliothek bietet Wertverbesserungen und neue Rezepte. Bei einem Bibliotheksbesuch kann der Spieler einmal lernen und zusätzlich Rezepte kaufen (E-063 bis E-066). Fähigkeiten und gekaufte Rezepte gelten gemeinsam in beiden Welten (E-068).
-**Testvorschlag:** Die folgende Verteilung auf beide Welten, Materialnamen, Preise, Rezeptauswahl und Startwerte dienen der ersten spielbaren Prüfung. Sie legen den endgültigen geerbten Startbestand und die Balance noch nicht fest.
+**Umgesetzt in 0.3.0:** Die folgenden Materialnamen, Anfangspreise, Rezepte und Startwerte sind bestätigte Testdaten. Sie legen den endgültigen geerbten Startbestand und die Balance noch nicht fest. Formeln und Lernregeln: [Handelsregeln 0.3.0](handelsprototyp-0.3.md).
 
 Für den Tischler liefern das Sägewerk Holz, der Schmied Nägel und der Schneider Stoffe für gepolsterte Möbel. Als Testaufbau erhält jede Welt diese drei Händler und eine Bibliothek neben dem eigenen Laden. Die drei Waren je Händler ergeben neun Materialsorten pro Welt und achtzehn insgesamt. Der Wochenmarkt folgt weiterhin in einem späteren Meilenstein.
 
@@ -40,15 +40,15 @@ S bezeichnet Silber beziehungsweise Silbergroschen. Die besonderen Materialien s
 
 Eichenholz für 10 Euro und magische Nägel für 10 Silber erhalten das bestätigte Küchenstuhlbeispiel. Die anderen Preise sind vorläufige Testwerte. Ein Material wird für die Kostenberechnung mit seiner Bezugswelt und Einkaufswährung geführt; Eisennägel aus beiden Welten besitzen deshalb getrennte Preisreferenzen.
 
-Im ersten Test ist der aufgeführte Händler die eindeutige Preisquelle seiner Materialien. Spätere Änderungen dieses Preises verändern die laufenden Produktionskosten gemäß E-061. Verfügbare Händlerbestände und Nachlieferungen sowie der genaue Zeitpunkt einer Preisänderung bleiben festzulegen. Die Tabelle setzt keine unbegrenzte Verfügbarkeit voraus.
+Im ersten Test ist der aufgeführte Händler die eindeutige Preisquelle seiner Materialien. Spätere Änderungen dieses Preises verändern die laufenden Produktionskosten gemäß E-061. Händlerbestände sind unbegrenzt. Bei der Weltwahl ab Tag 8 werden die Preise der aktiven Welt nach dem festgelegten Wochenzyklus aktualisiert; die andere Welt behält ihren letzten Preisstand.
 
 Materialbeiträge zur Qualität, besondere Eigenschaften, Wert je Welt und Chaoseinfluss werden mit den jeweiligen Formeln bestimmt. Der Einkaufspreis wird nicht als Qualitätszahl übernommen. Die Qualität hängt weiterhin auch von den Fähigkeiten beim Bau ab; bestehende Prototypen werden durch spätere Fähigkeitsverbesserungen nicht verändert.
 
 ## Bibliothek und Rezepte
 
-Die Bibliothek ist ein eigener Ortsbesuch. **Bestätigt durch E-066:** Einmal lernen und zusätzlich Rezepte kaufen sind im selben Besuch möglich. Der eigene Laden verkauft an diesem Tag nicht. Fähigkeiten und Rezepte gelten gemeinsam in beiden Welten (E-068). Welche Werte verbessert werden können, Lernzuwachs, Obergrenzen und mögliche Lernkosten bleiben auszuarbeiten.
+Die Bibliothek ist ein eigener Ortsbesuch. **Bestätigt durch E-066:** Einmal lernen und zusätzlich Rezepte kaufen sind im selben Besuch möglich. Der eigene Laden verkauft an diesem Tag nicht. Fähigkeiten und Rezepte gelten gemeinsam in beiden Welten (E-068). Tischlern steigt kostenlos um eine Stufe bis 10. Analyse wird einmalig in der Fantasybibliothek statt Tischlern gelernt und ist anschließend in beiden eigenen Läden kostenlos nutzbar.
 
-**Rezeptvorschlag für den Test:** Der Küchenstuhl mit Holz und Nägeln ist zu Beginn bekannt. Die Bibliotheken bieten drei weitere Rezepte an; diese Auswahl ist zusätzlich zu den drei Materialwaren der Händler vorgeschlagen.
+**Bestätigte Testrezepte:** Der Küchenstuhl mit Holz und Nägeln ist zu Beginn bekannt. Die Bibliotheken bieten drei weitere Rezepte an; diese Auswahl ist zusätzlich zu den drei Materialwaren der Händler umgesetzt.
 
 | Rezept | Materialgruppen | Kaufpreis in unserer Welt | Kaufpreis in der Fantasywelt |
 | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ Die Bibliothek ist ein eigener Ortsbesuch. **Bestätigt durch E-066:** Einmal le
 | Holztruhe | Holz + Nägel | 25 € | 20 S |
 | Polsterstuhl | Holz + Nägel + Stoff | 35 € | 30 S |
 
-Die Angaben nennen Materialgruppen ohne Kilogramm oder einzelne Zutatenstückzahlen. Der Polsterstuhl ermöglicht es, auch die Waren des Schneiders im Test zu verwenden. Rezeptkäufe sind eigene Ausgaben und werden nicht als Materialkosten pro verkauftem Möbelstück wiederholt. Ein gekauftes Rezept gilt in beiden Welten und benötigt dort keine zweite Freischaltung (E-068). Ob es unmittelbar nach dem Kauf nutzbar ist, bleibt festzulegen.
+Die Angaben nennen Materialgruppen ohne Kilogramm oder einzelne Zutatenstückzahlen. Der Polsterstuhl ermöglicht es, auch die Waren des Schneiders im Test zu verwenden. Rezeptkäufe sind eigene Ausgaben und werden nicht als Materialkosten pro verkauftem Möbelstück wiederholt. Ein gekauftes Rezept gilt in beiden Welten und benötigt dort keine zweite Freischaltung (E-068). Es ist unmittelbar nach dem Kauf bekannt und beim nächsten eigenen Ladenbesuch nutzbar.
 
 ## Startzustand für die erste Rechenprüfung
 
@@ -69,17 +69,13 @@ Die Angaben nennen Materialgruppen ohne Kilogramm oder einzelne Zutatenstückzah
 | Gemeinsames Lager | Leer |
 | Beide Auslagen | Leer |
 | Bekanntes Rezept | Küchenstuhl = Holz + Nägel; gemeinsamer Rezeptstand für beide Welten |
-| Tischlerfähigkeit | Vorschlag: Wert 1 als Anfangsstand; Name, Skala und Qualitätsbeitrag noch offen |
+| Tischlerfähigkeit | Tischlern: Stufe 1, kostenlos bis 10 steigerbar; +2 Qualitätspunkte je Stufe über 1 |
 | Tageszähler | Beide Welten beginnen bei Tag 1; nur die besuchte Welt schreitet voran |
 
 Damit lässt sich das bestätigte Küchenstuhlbeispiel unverändert reproduzieren. Ein zweiter Test kauft das Polsterstuhlrezept und einen Stoff, baut einen neuen Prototyp und prüft dessen Eigenschaften. Ein Bibliotheksbesuch mit Lernfortschritt prüft, dass danach gebaute Prototypen in beiden Welten den verbesserten gemeinsamen Fähigkeitsstand verwenden und bereits vorhandene ihre Qualität behalten. Ein Weltwechsel zu Beginn einer späteren Runde benötigt weder Geld noch einen zusätzlichen Tag (E-067); der gemeinsame Rezeptstand bleibt dabei erhalten.
 
 ## Verbleibende Festlegungen
 
-- Qualitäts- und Wertformel sowie die Bedeutung der trainierbaren Werte.
-- Lernzuwachs, mögliche Lernkosten und Obergrenzen; einmal lernen je Besuch ist bereits bestätigt.
-- Zeitpunkt der Nutzbarkeit eines Rezepts nach dem Kauf; Geltung in beiden Welten ist bestätigt.
-- Händlerbestände und Nachlieferungen, Anzahl der Auslagenplätze sowie Nachfrageformel.
-- Endgültige geerbte Waren, Geldbestände und Schulden für den eigentlichen Spielbeginn.
+Die Testregeln sind in [Handelsregeln 0.3.0](handelsprototyp-0.3.md) konkretisiert. Endgültige Balance, geerbte Waren und Schulden für den eigentlichen Spielbeginn bleiben offen.
 
 Grundlagen: [Handwerk und Herstellung](handwerk-und-herstellung.md), [Herstellung und Verkauf mit Kostenrechnung](herstellungs-kosten-verkaufsregeln.md), [Spielablauf](spielablauf.md), [Roadmap](roadmap.md) und [Entscheidungen](entscheidungen.md). Zugehörige Fragen: F-11, F-20, F-24, F-26, F-30, F-33 und F-37 in [Offene Fragen](offene-fragen.md).

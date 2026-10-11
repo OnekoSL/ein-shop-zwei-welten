@@ -1,7 +1,7 @@
 # Nachfrage und reagierende Konkurrenz
 
 **Stand:** 11. Oktober 2026  
-**Status:** Entwurf zur Diskussion. Kundengruppen, Anpassungen anderer Geschäfte, neue Konkurrenzwaren und die Wirkung von Chaos auf den Markt sind als Richtung des Nutzers aufgenommen. Die folgenden Berechnungsregeln und der vorgeschlagene Testumfang sind noch nicht bestätigt.
+**Status:** Drei Kundengruppen und zwei feste Konkurrenten sind mit deterministischer Nachfrage in 0.3.0 umgesetzt. Verbindliche Testformeln: [Handelsregeln 0.3.0](handelsprototyp-0.3.md). Die folgenden Vorschläge zu Konkurrenzreaktionen, neuen Waren und Chaos bleiben spätere Ausbauschritte.
 
 Der Verkaufspreis soll der stärkste unmittelbar veränderbare Regler für das Kaufinteresse sein. Entscheidend ist sein Verhältnis zum wahrgenommenen Nutzen der Ware und zu vergleichbaren Konkurrenzangeboten. Bedarf, Kaufkraft und Vertrauen bestimmen, welche Kunden überhaupt einen Kauf erwägen. Konkurrenz reagiert auf die Entscheidungen des Spielers; Chaos verändert die Marktbedingungen.
 
@@ -34,13 +34,13 @@ Die Qualität der Spielerprodukte entsteht aus Materialien und Fähigkeiten der 
 
 Der durch Analyse sichtbare Produktwert bleibt eine Grundlage für den Nutzenvergleich. Wie Kundengruppen ihn gewichten und besondere Eigenschaften bewerten, muss zusammen mit der Wertformel festgelegt werden. Der geheime Weltchaoswert wird dabei nicht automatisch noch einmal als pauschaler Abzug vom Produktwert verwendet.
 
-Die konkrete Bewertungsfunktion, Verteilung, Rundung und ein möglicher Zufallsanteil bleiben offen. Ebenfalls offen ist, ob Kunden nach einem ausverkauften Angebot zu einem anderen Geschäft wechseln oder ihren Kauf vertagen. Mehrere Spielerangebote teilen bereits bestätigt das Anfangsbudget in Ladenplatzreihenfolge; sämtliche Einnahmen folgen erst nach der Finanzierung aller Plätze (E-059 und E-062). Die Platzreihenfolge steuert das Produktionsbudget, nicht automatisch die Verteilung der Kunden. Bei null Nachfrage bleibt der Prototyp erhalten und verbraucht kein Budget (E-060).
+Bewertung und Rundung sind für 0.3.0 festgelegt. Es gibt keinen Zufall. Kunden verteilen sich zunächst auf Geschäfte und Nichtkauf, dann auf passende Spielerangebote; nicht erfüllte Käufe entfallen. Die Platzreihenfolge steuert ausschließlich das Produktionsbudget. Sämtliche Einnahmen folgen nach der Finanzierung aller Plätze.
 
 ## Warum ein niedrigerer Preis nicht immer mehr Verkäufe bringt
 
 Im bestätigten Küchenstuhlbeispiel beträgt die Nachfrage bei 40 Silber sechs und das Tageslimit fünf. Bei ausreichendem Geld werden fünf Stühle verkauft.
 
-**Gedankliches Testbeispiel, keine Nachfrageformel:** Würde eine Preissenkung auf 25 Silber zehn Kaufinteressenten erzeugen, blieben wegen desselben Tageslimits trotzdem nur fünf Verkäufe möglich. Die Verkaufsgutschrift sänke von 200 auf 125 Silber bei gleichen Materialkosten. Die Preissenkung würde zusätzliche Nachfrage erzeugen, aber den tatsächlichen Absatz nicht erhöhen.
+**Berechneter Testfall in 0.3.0:** Eine Preissenkung auf 25 Silber erzeugt zehn Kaufinteressenten; wegen desselben Tageslimits bleiben trotzdem nur fünf Verkäufe möglich. Die Verkaufsgutschrift sänke von 200 auf 125 Silber bei gleichen Materialkosten. Die Preissenkung würde zusätzliche Nachfrage erzeugen, aber den tatsächlichen Absatz nicht erhöhen.
 
 Preisoptimierung bedeutet deshalb, Kaufinteresse, verfügbare Produktionsmenge und Finanzierung gemeinsam zu betrachten.
 
@@ -67,12 +67,10 @@ Für die Nachfrage werden konkrete Folgen vorgeschlagen: Misstrauen gegenüber a
 
 Produktauffälligkeit, Gewöhnung, Reputation und Weltchaos bleiben getrennte Größen. Ein guter Ruf bei Händlern ist noch kein bestätigter Vertrauensbonus bei Kunden. Die Konkurrenz kann wirtschaftlich reagieren, während Gespräche und Ereignisse die gesellschaftlichen Folgen zeigen. Chaoswerte und interne Gewichtungen werden dem Spieler nicht angezeigt.
 
-## Vorgeschlagener erster Test und weitere Ausarbeitung
+## Umgesetzter Test und weitere Ausarbeitung
 
-Der erste Test umfasst je Welt drei Kundengruppen, die Produktkategorie Küchenstuhl und zwei konkurrierende Geschäfte mit unterschiedlichen Angeboten. Zunächst werden Bedarf, Budgets und Konkurrenzangebote als Testwerte gesetzt. Damit lassen sich Preisänderungen, unterschiedliche Materialqualität und begrenzte Verkäufe prüfen.
+0.3.0 umfasst drei Kundengruppen, die Kategorien Stühle einschließlich Polsterstuhl, Tische und Truhen sowie zwei feste Konkurrenten je Welt. Bedarf, Kaufbudgets und Formeln sind als Testbalance festgelegt; Zahlen und Rechenproben stehen in [Handelsregeln 0.3.0](handelsprototyp-0.3.md).
 
-Danach werden verzögerte Preisreaktionen und eine vorbereitete neue Konkurrenzvariante ergänzt. Konkrete Chaosfolgen kommen zusammen mit Meilenstein 4 hinzu. Eine vollständige Simulation von Einkommen, Haushalten, Rohstofflieferketten und Firmenfinanzen ist eine mögliche spätere Erweiterung; sie ist keine Voraussetzung für diese Nachfrageberechnung.
-
-Als Nächstes sind Kaufbudgets, Bedarf und die Preisbewertung für einen gewöhnlichen und einen hochwertigen Stuhl durchzurechnen. Anschließend werden Konkurrenzreaktionen, Entwicklungsdauer, Rundung und der Umgang mit nicht bedienten Kunden festgelegt. Erst dann werden Formeln und Testwerte als verbindliche Regeln übernommen.
+Verzögerte Konkurrenzreaktionen, neue Konkurrenzwaren, Chaos und Gewöhnung bleiben auszuarbeiten. Eine vollständige Haushalts- oder Lieferkettensimulation ist weiterhin keine Voraussetzung.
 
 Grundlagen: [Herstellung und Verkauf mit Kostenrechnung](herstellungs-kosten-verkaufsregeln.md), [Handel und Währungen](handel-und-waehrungen.md), [Chaoswert](chaoswert.md), [Reputation und Gespräche](reputation-und-gespraeche.md) und [Roadmap](roadmap.md). Offene Entscheidungen gehören zu F-26, F-31, F-36 und F-38 in [Offene Fragen](offene-fragen.md).

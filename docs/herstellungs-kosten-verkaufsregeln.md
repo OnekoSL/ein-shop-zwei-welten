@@ -1,7 +1,7 @@
 # Herstellung und Verkauf mit Kostenrechnung
 
 **Stand:** 11. Oktober 2026  
-**Status:** Materialverbrauch, Lager und Auslage, Vorfinanzierung in ursprünglichen Einkaufswährungen, Ladenplatzreihenfolge, Erhalt bei null Nachfrage, dynamische Materialkosten und Warenhandel als einziger indirekter Geldtransfer sind bestätigt (E-047 und E-049 bis E-062). Die konkrete Nachfrageformel, Qualitätsberechnung und weitere Betriebsregeln bleiben offen. E-048 zur eigenen Euro-Kostenbasis ist durch E-049 ersetzt.
+**Status:** Die bestätigten Regeln sind in Version 0.3.0 umgesetzt. Konkrete Nachfrage-, Qualitäts- und Wertformeln sowie Preisperioden stehen in den [Handelsregeln 0.3.0](handelsprototyp-0.3.md). Dieses Dokument erläutert die grundlegende Abrechnung und ihre Beispiele. E-048 zur eigenen Euro-Kostenbasis ist durch E-049 ersetzt.
 
 Der Spieler kauft Materialien und baut daraus einen Prototyp. Dieser kommt zunächst ins gemeinsame Lager und wird anschließend in die Auslage gestellt. Er ermöglicht den Verkauf zusätzlicher, rechnerisch produzierter Waren. Vor diesen Verkäufen müssen die Materialkosten in allen benötigten Währungen bezahlt werden können. Reicht das verbliebene Produktionsbudget für kein weiteres Exemplar, wird der Prototyp bei positiver Nachfrage selbst wie ein Einzelstück verkauft. Bei null Nachfrage bleibt er stehen.
 
@@ -21,7 +21,7 @@ Im eigenen Laden kann der Spieler den gerade gebauten Prototyp noch während des
 
 ## Produktqualität
 
-**Bestätigt durch E-054:** Die Qualität entsteht aus den verwendeten Materialien und den Fähigkeiten der Spielfigur. Für den Küchenstuhl sind daher neben Holz und Nägeln auch die für die Herstellung relevanten Fähigkeiten zu berücksichtigen. Welche Fähigkeiten zählen, ihre Gewichtung und die Berechnungsformel bleiben offen.
+**Bestätigt durch E-054:** Die Qualität entsteht aus den verwendeten Materialien und den Fähigkeiten der Spielfigur. Version 0.3.0 verwendet den kaufmännisch gerundeten Durchschnitt der Materialbeiträge plus zwei Punkte je Tischlerstufe über Stufe 1. Die Qualität wird beim Bau festgeschrieben.
 
 Die resultierende Qualität beeinflusst den Wert und die Tagesverkaufsgrenze gemäß E-041 und E-045. **E-055 bestätigt:** Bestehende Prototypen behalten bei späteren Fähigkeitsverbesserungen ihre beim Bau bestimmte Qualität. Zusätzliche Verkaufsware folgt weiterhin der Qualität dieses Prototyps. Für ein Angebot mit der durch verbesserte Fähigkeiten erreichbaren Qualität muss ein neuer Prototyp gebaut werden; dafür sind wie bisher erneut Materialien erforderlich.
 
@@ -53,7 +53,7 @@ Ein in der Fantasy-Auslage verbliebener Prototyp kann beim Besuch des realen Lad
 
 **Gleiche Variante, getrennte Exemplare (E-058):** Soll beispielsweise der Küchenstuhl aus Eichenholz und magischen Nägeln in beiden Geschäften angeboten werden, müssen zwei Prototypen gebaut werden. Jeder Bau verbraucht seine eigenen Materialposten. Dasselbe Exemplar kann nicht gleichzeitig in beiden Auslagen stehen.
 
-Die Zahl der Auslagenplätze und der physische Lagerzugang bleiben bei F-25 offen.
+Version 0.3.0 hat drei feste Auslagenplätze je Laden. Rücknahme und Ausstellen erfolgen beim Besuch des jeweiligen eigenen Ladens über das gemeinsame Lager.
 
 ## Ladenverkauf nur beim eigenen Ladenbesuch
 
@@ -73,7 +73,7 @@ Die Kosten für den ersten Materialkauf bezahlen den Prototyp. Jeder spätere Ma
 
 **Vorschlag zur technischen Abbildung:** Am Prototyp die verwendeten Materialien und deren Bezugswelt beziehungsweise Einkaufswährung referenzieren. Für die laufende Produktion die gültigen Materialpreise abrufen und getrennt in Cent und Pfennig summieren. Die bereits bezahlten Einkaufsausgaben bleiben als historische Kosten erhalten; sie sind keine unveränderlichen Stückkosten für spätere Verkäufe.
 
-**Vorschlag für den ersten Test:** Ein eindeutiger Referenzpreis je Material in seiner Bezugswelt. Welcher Preis bei mehreren Händlern gilt und zu welchem Zeitpunkt Preisänderungen wirksam werden, bleibt festzulegen. Die Preisberechnung wird für einen Abrechnungslauf konsistent gehalten. Der Prototyp muss wegen geänderter Materialpreise nicht neu gebaut werden; seine Qualität bleibt erhalten.
+**Umgesetzt in 0.3.0:** Jedes Material hat eine eindeutige Preisquelle in seiner Bezugswelt. Bei der Weltwahl werden die Preise der aktiven Welt anhand ihres nächsten Welttags aktualisiert; die inaktive Welt behält ihre zuletzt gültigen Preise. Einkauf und Abrechnung verwenden diese Preise während des gesamten Tages. Die Wochenfaktoren sind in den [Handelsregeln](handelsprototyp-0.3.md) festgelegt. Der Prototyp muss bei Preisänderungen nicht neu gebaut werden; seine Qualität bleibt erhalten.
 
 **Rechenprobe mit geänderten Preisen:** Steigt Eichenholz von 10 auf 15 Euro, während magische Nägel weiterhin 10 Silber kosten, kostet jeder zusätzliche Stuhl nun 15 Euro und 10 Silber. Mit 40 Euro und 240 Silber sind bei Nachfrage sechs und Limit fünf nur zwei zusätzliche Stühle finanzierbar. Nach 30 Euro und 20 Silber Materialkosten sowie 80 Silber Einnahmen bleiben **10 Euro und 300 Silber**; der Prototyp bleibt ausgestellt. Der frühere Einkauf des Prototyps wird nicht erneut belastet.
 
@@ -209,14 +209,8 @@ Exotische Einzelstücke aus einmaligen Wochenmarkt-Materialien bleiben von vornh
 
 Die ursprünglichen Vorschläge mit lokalen Kostenpauschalen, alleiniger Begrenzung von Verlustangeboten und sofortiger Verrechnung des Erlöses gelten nicht mehr. Die neue Kosten- und Finanzierungsregel gilt bei jeder Preiswahl, auch wenn ein Verkauf wirtschaftlich profitabel wäre.
 
-Für den ersten Handelsablauf bleiben insbesondere offen:
+Nachfrage, Qualität, Mengenbasis, Rundung, Werte, Materialpreisquellen, drei Auslagenplätze und Analyse sind für den ersten Handelsablauf festgelegt und automatisiert geprüft. Die Abrechnung erfolgt nach dem neutralen Ereignis im vorbereiteten nächsten Spielstand; erst erfolgreiches Speichern übernimmt Verkäufe und Tagesfortschritt.
 
-- Nachfrageformel aus Preis und verborgenem Wert, unabhängig vom Tageslimit.
-- Qualitätsskala, Mengenbasis, Rundung und Wertformel; die fünf möglichen Verkäufe und sechs nachgefragten Stühle sind Beispielwerte.
-- Referenzpreise bei mehreren Materialhändlern und der genaue Zeitpunkt von Preisänderungen. Laufende Kosten folgen den gültigen Materialpreisen (E-061); Ladenplatzreihenfolge, gemeinsame Vorfinanzierung und Erhalt bei null Nachfrage sind durch E-059, E-060 und E-062 geklärt.
-- Zahl der Auslagenplätze und physischer Lagerzugang. Rücknahme über das Lager, zwei getrennte Exemplare für beide Auslagen und Verkauf nur beim eigenen Ladenbesuch sind durch E-056 bis E-058 geklärt.
-- Analysezugang, endgültiger geerbter Startbestand und Verhältnis der Verkaufsabrechnung zu Ereignissen.
-
-Chaosberechnung, Gewöhnung und Reputation bleiben getrennte Arbeitsschritte. Die bestätigten Regeln dieses Beispiels werden als Grundlage von Meilenstein 0 in der [Roadmap](roadmap.md) verwendet; die offenen Formeln verhindern noch den Abschluss dieses Meilensteins.
+Offen bleiben die endgültige Balance, der geerbte Startbestand, einmalige Wochenmarkt-Materialien sowie das Zusammenspiel mit zukünftigen Ereigniswirkungen. Chaosberechnung, Gewöhnung und Reputation folgen als getrennte Arbeitsschritte. Die Regelgrundlage für den ersten Handelsablauf in der [Roadmap](roadmap.md) ist damit abgeschlossen.
 
 Grundlagen: [Handwerk und Herstellung](handwerk-und-herstellung.md), [Handel und Währungen](handel-und-waehrungen.md), E-047 und E-049 bis E-062 in [Entscheidungen](entscheidungen.md). Zugehörige Fragen: F-04, F-05, F-24 bis F-27, F-30 und F-37 in [Offene Fragen](offene-fragen.md).

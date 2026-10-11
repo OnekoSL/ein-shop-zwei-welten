@@ -5,13 +5,13 @@
 
 Der Spieler kauft Materialien, kennt ein Rezept und baut einen Prototyp. Die verwendeten Materialien werden beim Bau verbraucht; für einen weiteren Prototyp werden Materialien erneut gekauft (E-047). Der Prototyp kommt ins gemeinsame Lager und wird beim Ausstellen daraus in die Auslage verschoben (E-050). Bei Verkäufen zusätzlich produzierter Waren bleibt er erhalten. Reicht das Produktionsbudget seines Ladenplatzes für kein zusätzliches Produkt, wird er bei positiver Nachfrage selbst verkauft und das Angebot endet (E-051, E-052 und E-060). Bei null Nachfrage bleibt er erhalten.
 
-Das bestätigte [Küchenstuhlbeispiel](herstellungs-kosten-verkaufsregeln.md) konkretisiert Herstellung, Auslage, Kosten in mehreren Währungen und Vorfinanzierung. Die Nachfrage- und Wertformeln sowie weitere Betriebsregeln bleiben offen.
+Das bestätigte [Küchenstuhlbeispiel](herstellungs-kosten-verkaufsregeln.md) konkretisiert Herstellung, Auslage, Kosten in mehreren Währungen und Vorfinanzierung. Die bestätigte Testbalance steht in [Handelsregeln 0.3.0](handelsprototyp-0.3.md).
 
 ## Erster Testumfang
 
 Der erste Test verwendet eine Tischlerei. Als Einkaufsorte sind Schmied, Sägewerk und Schneider mit jeweils drei verschiedenen Waren bestätigt (E-063 und E-065). Die Bibliothek gehört ebenfalls dazu: Dort verbessert der Spieler Werte und kauft Rezepte. Pro Besuch kann er einmal lernen und zusätzlich Rezepte kaufen; der eigene Laden verkauft an diesem Tag nicht (E-064 und E-066).
 
-Das [Testsortiment und der Startbestand](testsortiment-und-startbestand.md) schlagen Holzarten, Nägelarten, Stoffe, Preise und weitere Möbelrezepte für beide Welten vor. Materialeigenschaften, Qualitätsformel und Lernwerte bleiben auszuarbeiten. Späteres Lernen verändert bestehende Prototypen nicht; beim Bau eines neuen Exemplars zählen die dann aktuellen Fähigkeiten.
+Das [Testsortiment und der Startbestand](testsortiment-und-startbestand.md) schlagen Holzarten, Nägelarten, Stoffe, Preise und weitere Möbelrezepte für beide Welten vor. Materialbeiträge, Qualitätsformel und Lernwerte sind für 0.3.0 festgelegt. Späteres Lernen verändert bestehende Prototypen nicht; beim Bau eines neuen Exemplars zählen die dann aktuellen Fähigkeiten.
 
 ## Genannte Handwerksbetriebe
 
@@ -39,7 +39,7 @@ Die endgültige Auswahl beim Spielstart, Entsprechungen in beiden Welten und kon
 
 Die Vereinfachung betrifft Zutatenmengen und Produktionsverwaltung. Verschiedene gebaute Exemplare im Lager und ein berechneter Tagesabsatz sind ausdrücklich Teil des Modells. Die Zahl der gelagerten Stühle begrenzt die normalen Tagesverkäufe nicht.
 
-Dies ersetzt die direkte Aufnahme fertiger Produkte ins Angebot aus E-037. Die Vorgabe, das Mikromanagement möglichst klein zu halten, bleibt bestehen. Materialverbrauch und Nachkauf für neue Prototypen sind durch E-047 geklärt. Das Küchenstuhlbeispiel bestätigt Bau und anschließendes Ausstellen während desselben eigenen Ladenbesuchs. Weitere Herstellungsbeschränkungen und die konkrete Bedienung bleiben offen.
+Dies ersetzt die direkte Aufnahme fertiger Produkte ins Angebot aus E-037. Die Vorgabe, das Mikromanagement möglichst klein zu halten, bleibt bestehen. Materialverbrauch und Nachkauf für neue Prototypen sind durch E-047 geklärt. Das Küchenstuhlbeispiel bestätigt Bau und anschließendes Ausstellen während desselben eigenen Ladenbesuchs. Im eigenen Ladenbesuch sind beliebig viele einzelne Bauten möglich, solange Materialien vorhanden sind. Drei feste Plätze werden über das Lager bestückt.
 
 ## Prototypen über das Lager verschieben
 
@@ -53,11 +53,11 @@ Ein Prototyp in der Fantasy-Auslage muss dort zurück ins Lager genommen werden,
 
 **Bestätigt durch E-055:** Bestehende Prototypen werden durch spätere Fähigkeitsverbesserungen nicht verändert. Ihre Qualität wird aus den Materialien und Fähigkeiten beim Bau bestimmt. Verbesserte Fähigkeiten werden bei neu gebauten Prototypen berücksichtigt. Zusätzlich produzierte Verkaufsware übernimmt weiterhin die Qualität des ausgestellten Prototyps; ein Fähigkeitsanstieg verbessert das bestehende Angebot nicht automatisch.
 
-**Bestätigt durch E-068:** Fähigkeiten und gekaufte Rezepte gelten gemeinsam in beiden Welten. Ein Bibliotheksbesuch verbessert den gemeinsamen Fähigkeitsstand; dieser zählt beim späteren Bau eines neuen Prototyps in jeder Welt. Ein Rezept benötigt in der anderen Welt keine zweite Freischaltung. Der genaue Zeitpunkt der Nutzbarkeit nach dem Kauf bleibt festzulegen.
+**Bestätigt durch E-068:** Fähigkeiten und gekaufte Rezepte gelten gemeinsam in beiden Welten. Ein Bibliotheksbesuch verbessert den gemeinsamen Fähigkeitsstand; dieser zählt beim späteren Bau eines neuen Prototyps in jeder Welt. Ein Rezept benötigt in der anderen Welt keine zweite Freischaltung. Gekaufte Rezepte sind sofort bekannt und beim nächsten eigenen Ladenbesuch nutzbar.
 
-Welche Fähigkeiten bei welchem Rezept zählen, wie Materialien und Fähigkeiten gewichtet werden und welche Qualitätsskala gilt, bleibt offen. Eine additive Formel oder ein Multiplikator ist noch nicht festgelegt.
+Alle vier Testrezepte verwenden Tischlern. Der gerundete Durchschnitt der Materialbeiträge 10/20/30 plus zwei Punkte je Tischlerstufe über 1 ergibt die gespeicherte Qualität.
 
-Die Qualität fließt weiterhin in den Produktwert ein (E-041) und bestimmt die umgekehrt proportionale Tagesverkaufsgrenze (E-045). Nach dieser Regel bedeutet eine höhere resultierende Qualität bei gleicher Mengenbasis ein kleineres Tageslimit; das gilt auch, wenn die Qualitätsänderung aus Fähigkeiten entsteht. Der genaue Einfluss auf Wert und Nachfrage bleibt auszuarbeiten.
+Die Qualität fließt weiterhin in den Produktwert ein (E-041) und bestimmt die umgekehrt proportionale Tagesverkaufsgrenze (E-045). Nach dieser Regel bedeutet eine höhere resultierende Qualität bei gleicher Mengenbasis ein kleineres Tageslimit; das gilt auch, wenn die Qualitätsänderung aus Fähigkeiten entsteht. Wert, Limit und Nachfrage des ersten Tests sind in [Handelsregeln 0.3.0](handelsprototyp-0.3.md) festgelegt.
 
 ## Entwurf der einfachen Objekte
 
@@ -77,7 +77,7 @@ Ob der Spieler ein Rezept kennt, welche Fähigkeiten er besitzt und welche Exemp
 ## Kosten, Wert, Preis und Tagesabsatz
 
 - **Materialkosten:** Laufende Stückkosten aus den gültigen Preisen der verwendeten Materialien; getrennte Beträge in den ursprünglichen Einkaufswährungen (E-061). Beim Küchenstuhl zu den unveränderten Beispielpreisen 10 Euro und 10 Silber je zusätzlichem Produkt. Bereits bezahlte Prototypkosten bleiben historische Ausgaben.
-- **Wert:** Ergebnis aus Qualität und Chaoseinfluss, je Verkaufswelt. Die Formel bleibt offen (E-041).
+- **Wert:** Ergebnis aus Qualität und Chaoseinfluss, je Verkaufswelt. 0.3.0 verwendet Qualität und feste Materialaufschläge je Welt; dynamische Chaoswirkungen folgen später (E-041).
 - **Preis:** Wird vom Spieler in der Verkaufswährung gesetzt (E-040).
 - **Nachfrage:** Preisabhängig geschätzte Verkäufe vor der Begrenzung. Im Beispiel sechs Stühle zu je 40 Silber.
 - **Tageslimit:** Maximale zusätzliche Verkäufe pro Tag. Im Beispiel fünf; allgemein umgekehrt proportional zur Qualität (E-045).
@@ -93,7 +93,7 @@ Für jede Währung gilt gesondert:
 
 Bei nur einer Währung entspricht dies weiterhin `Verkäufe × (Preis − Materialkosten)`. Gemischte Euro- und Silberkosten werden nicht zu einem Betrag umgerechnet. Die frühere eigene Euro-Kostenbasis aus E-048 ist durch E-049 ersetzt.
 
-Die mathematische Grundform des Tageslimits bleibt **Mengenbasis / Qualität**. Qualitätsskala, Mengenbasis, Rundung sowie Wert- und Nachfrageformeln bleiben auszuarbeiten. Die Nachfrageberechnung muss auch einen Bedarf oberhalb des Tageslimits erlauben; das Limit wird anschließend angewendet.
+Die mathematische Grundform des Tageslimits bleibt **Mengenbasis / Qualität**. Rezeptabhängige Mengenbasen, Rundung sowie Wert- und Nachfrageformeln sind für 0.3.0 festgelegt. Die Nachfrageberechnung muss auch einen Bedarf oberhalb des Tageslimits erlauben; das Limit wird anschließend angewendet.
 
 Normale Verkäufe zusätzlicher Waren lassen den Prototyp erhalten. Reicht das beim Prüfen seines Platzes verbliebene Produktionsbudget für kein weiteres Produkt und besteht Nachfrage, wird stattdessen der bereits bezahlte Prototyp selbst zum gesetzten Preis verkauft, ohne weitere Materialkosten. Er verlässt die Auslage und den Besitz; das Angebot endet (E-051 und E-060). Nach einer noch finanzierbaren Teilmenge bleibt er in derselben Runde erhalten (E-052). Bei null Nachfrage bleibt er auch ohne Produktionsgeld stehen.
 
@@ -123,10 +123,10 @@ Die früheren Einkaufsausgaben bleiben für die Betrachtung des Gesamtgewinns re
 
 ## Noch auszuarbeiten
 
-- **F-26:** Wert- und Nachfrageformel; Qualitätsskala, Mengenbasis und Rundung; Referenzpreise bei mehreren Materialhändlern und genauer Gültigkeitszeitpunkt der Preise. Ladenplatzreihenfolge, Erhalt bei null Nachfrage, dynamische Stückkosten und gemeinsame Vorfinanzierung sind durch E-059 bis E-062 geklärt. Verkauf nur beim eigenen Ladenbesuch ist durch E-056 bestätigt. Masse und hochwertige Waren bleiben zu prüfen.
-- **F-37:** Materialverbrauch und Nachkauf für neue Prototypen sind bestätigt (E-047). Das Küchenstuhlbeispiel bestätigt Bau und Ausstellen innerhalb desselben eigenen Ladenbesuchs. Weitere Herstellungsbeschränkungen und Bedienung bleiben offen. Exotische Einzelstücke und ihre Abrechnung sind geklärt; konkrete einmalige Rohstoffe und Produkte bleiben auszuarbeiten.
-- **F-25:** Zahl der Auslagenplätze und physischer Lagerzugang. Rücknahme und Wechsel über das gemeinsame Lager sowie zwei separate Exemplare für dieselbe Variante in beiden Auslagen sind durch E-057 und E-058 geklärt.
-- **F-24:** Erwerb und Anwendung von Analyse; weitere magische Fähigkeiten bei der Herstellung.
+- **F-26:** Testformeln und Preisperioden sind in [Handelsregeln 0.3.0](handelsprototyp-0.3.md) festgelegt. Endgültige Balance und dynamische Chaos-/Gewöhnungswirkungen bleiben offen.
+- **F-37:** Herstellung und Bedienung für vier Tischlerei-Rezepte sind umgesetzt. Weitere Berufe, einmalige Materialien und Wochenmarktprodukte folgen später.
+- **F-25:** Drei feste Plätze pro Laden; alle Transfers über das Lager. Physischer Lagerzugang und Marktstand bleiben späteren Schritten vorbehalten.
+- **F-24:** Analysezugang und Anwendung sind für 0.3.0 festgelegt. Weitere magische Fähigkeiten bleiben offen.
 - **F-16 und F-31:** Chaoseinfluss des angebotenen Exemplars und Verhältnis zur Gewöhnung. Bereits das Angebot kann Chaos auslösen (E-024).
 
 Grundlagen: E-033 bis E-045 sowie E-054 bis E-062 in den [Entscheidungen](entscheidungen.md), I-073 bis I-085 sowie I-090 bis I-098 in der [Ideensammlung](ideensammlung.md). Verknüpft mit [Handel und Währungen](handel-und-waehrungen.md), [Spielablauf](spielablauf.md) und [Offene Fragen](offene-fragen.md).
